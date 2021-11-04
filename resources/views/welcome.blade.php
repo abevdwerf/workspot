@@ -10,13 +10,13 @@
 <body>
     <header class="header">
         <div class="container">
-            <img class="header__logo" src="./img/workspot-logo-white.svg" alt="Workspot Logo">
+            <img class="header__logo" src="{{asset('./img/workspot-logo-white.svg')}}" alt="Workspot Logo">
 
             <div class="header__input">
                 <input type="text" class="form__input" value="R10, Eindhoven">
             </div>
 
-            <img class="header__illustration" src="./img/working-person-illustration.svg" alt="Illustration of a working person">
+            <img class="header__illustration" src="{{asset('./img/working-person-illustration.svg')}}" alt="Illustration of a working person">
         </div>
     </header>
 
@@ -113,7 +113,7 @@
         <section class="intro">
             <div class="container flex">
                 <div class="intro__image">
-                    <img src="./img/detective.svg" alt="Detective looking for a workspace">
+                    <img src="{{asset('./img/detective.svg')}}" alt="Detective looking for a workspace">
                 </div>
 
                 <div class="intro__content">
