@@ -1,0 +1,31 @@
+.intro
+    display: none
+    background-image: linear-gradient(to left bottom, $color-primary 35%, $color-primary-dark)
+
+    .container
+        justify-content: space-between
+
+    &__image
+        margin-right: 10rem
+
+        img
+            width: 36rem
+
+            @media screen and (min-width: $laptop-m)
+                width: 45rem
+
+    &__content
+        color: $color-white
+
+        p
+            margin: 3.5rem 0
+            line-height: 2.1
+            font-size: 1.7rem
+
+    .btn
+        padding-left: 6rem
+        padding-right: 6rem
+
+    @media screen and (min-width: $laptop)
+        display: block
+        padding: 12rem 0

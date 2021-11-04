@@ -1,0 +1,327 @@
+@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;600;700;800;900&display=swap);
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Montserrat", sans-serif;
+}
+@media screen and (min-width: 1600px) {
+  html {
+    font-size: 0.625vw;
+  }
+}
+
+body {
+  font-size: 1.5rem;
+}
+
+main {
+  background-color: #ffffff;
+  border-radius: 1.5rem;
+}
+
+h1, .h1 {
+  font-size: 4rem;
+  font-weight: 800;
+}
+
+a {
+  text-decoration: none;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  max-width: 130rem;
+}
+@media screen and (min-width: 1024px) {
+  .container {
+    padding: 0 5rem;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .container {
+    padding: 0;
+  }
+}
+
+.btn {
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  display: inline-block;
+  padding: 1.5rem 2.5rem;
+  border-radius: 0.5rem;
+  background-color: #2B2B2B;
+}
+.btn:focus {
+  outline: none;
+}
+@media screen and (min-width: 1024px) {
+  .btn {
+    font-size: 1.6rem;
+    border-radius: 0.75rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .form__group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+.form__label {
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: #B1B1B1;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+.form__label svg {
+  width: 1.9rem;
+  height: 1.9rem;
+  margin-right: 1.2rem;
+}
+.form__input {
+  width: 100%;
+  border: none;
+  font-weight: 500;
+  font-size: 1.6rem;
+  padding: 1.4rem 2rem;
+  border-radius: 0.5rem;
+  background-color: #F0F0F0;
+}
+.form__input:focus {
+  outline: none;
+}
+@media screen and (min-width: 1024px) {
+  .form__input {
+    padding: 1.6rem 2.5rem;
+  }
+}
+.form__input-wrapper:not(:last-of-type) {
+  margin-bottom: 3rem;
+}
+@media screen and (min-width: 1024px) {
+  .form__input-wrapper {
+    width: calc(50% - 4rem);
+  }
+}
+.form__selection-wrapper {
+  cursor: -webkit-grab;
+  cursor: grab;
+  display: flex;
+  overflow-x: auto;
+  padding: 0 2.5rem;
+  margin-left: -2.5rem;
+  width: calc(100% + 5rem);
+  background-color: #F0F0F0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.form__selection-wrapper::-webkit-scrollbar {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  .form__selection-wrapper {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border-radius: 0.5rem;
+  }
+}
+.form__selection-option {
+  font-size: 2.4rem;
+  color: #666666;
+  padding: 1.75rem 2.5rem;
+}
+.form__selection-option--active {
+  background-color: #ffffff;
+}
+.form__selection-option--active span {
+  font-weight: bold;
+  color: #A200FF;
+}
+.form__options-wrapper {
+  flex-wrap: wrap;
+  margin-bottom: -1rem;
+}
+@media screen and (min-width: 1024px) {
+  .form__options-wrapper {
+    margin-bottom: -1.5rem;
+  }
+}
+.form__options-item {
+  font-weight: 500;
+  font-size: 1.6rem;
+  padding: 1rem 2rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  background-color: #F0F0F0;
+}
+.form__options-item svg {
+  margin-right: 1rem;
+}
+.form__options-item:not(:last-child) {
+  margin-right: 1rem;
+}
+@media screen and (min-width: 1024px) {
+  .form__options-item {
+    padding: 1.5rem 3rem;
+    margin-bottom: 1.5rem;
+  }
+  .form__options-item svg {
+    width: 1.9rem;
+    height: 1.9rem;
+  }
+  .form__options-item:not(:last-child) {
+    margin-right: 2rem;
+  }
+}
+.form__submit {
+  width: 100%;
+  margin-top: 3.5rem;
+  background-color: #A200FF;
+}
+
+.header {
+  overflow: hidden;
+  padding: 2.5rem 0;
+  margin-bottom: -2.5rem;
+  background-image: linear-gradient(to right bottom, #A200FF 35%, #330061);
+}
+@media screen and (min-width: 1024px) {
+  .header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header .container > * {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+.header__logo {
+  width: 9rem;
+  display: block;
+  margin: 0 auto 4rem;
+}
+@media screen and (min-width: 1024px) {
+  .header__logo {
+    width: 20rem;
+    margin-top: 4.5rem;
+    margin-bottom: 6rem;
+  }
+}
+.header__input {
+  flex: 1;
+  display: none;
+  margin: 0 8rem !important;
+}
+.header__input input {
+  color: #ffffff;
+  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+@media screen and (min-width: 1024px) {
+  .header__input {
+    display: block;
+  }
+}
+.header__illustration {
+  display: block;
+  width: 24.75rem;
+  margin: 0 auto -3.35rem;
+}
+@media screen and (min-width: 1024px) {
+  .header__illustration {
+    width: 32.5rem;
+    margin-top: 3.5rem;
+    margin-bottom: -12.5rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .header {
+    margin: 0;
+    padding: 0;
+    overflow: inherit;
+  }
+}
+
+.finder {
+  padding: 5rem 0 2.5rem;
+}
+@media screen and (min-width: 1024px) {
+  .finder {
+    padding: 4rem 0 5rem;
+    width: calc(100% - 37.5rem);
+  }
+  .finder .form__group {
+    position: relative;
+  }
+  .finder .form__group .form__input-wrapper:first-child {
+    display: none;
+  }
+  .finder .form__group .form__input-wrapper:nth-child(2) {
+    padding-bottom: 4.5rem;
+  }
+  .finder .form__group .form__submit {
+    left: 0;
+    bottom: 0;
+    margin: 0;
+    position: absolute;
+    width: calc(50% - 4rem);
+    background-color: #2B2B2B;
+  }
+}
+
+.intro {
+  display: none;
+  background-image: linear-gradient(to left bottom, #A200FF 35%, #330061);
+}
+.intro .container {
+  justify-content: space-between;
+}
+.intro__image {
+  margin-right: 10rem;
+}
+.intro__image img {
+  width: 36rem;
+}
+@media screen and (min-width: 1440px) {
+  .intro__image img {
+    width: 45rem;
+  }
+}
+.intro__content {
+  color: #ffffff;
+}
+.intro__content p {
+  margin: 3.5rem 0;
+  line-height: 2.1;
+  font-size: 1.7rem;
+}
+.intro .btn {
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
+@media screen and (min-width: 1024px) {
+  .intro {
+    display: block;
+    padding: 12rem 0;
+  }
+}

@@ -1,0 +1,113 @@
+.form
+    &__group
+
+        @media screen and (min-width: $laptop)
+            display: flex
+            flex-wrap: wrap
+            justify-content: space-between
+
+    &__label
+        font-weight: 500
+        font-size: 1.4rem
+        color: $color-grey
+        margin-bottom: 1.25rem
+        text-transform: uppercase
+
+        svg
+            width: 1.9rem
+            height: 1.9rem
+            margin-right: 1.2rem
+
+    &__input
+        width: 100%
+        border: none
+        font-weight: 500
+        font-size: 1.6rem
+        padding: 1.4rem 2rem
+        border-radius: $border-radius
+        background-color: $color-grey-light
+
+        &:focus
+            outline: none
+            
+        @media screen and (min-width: $laptop)
+            padding: 1.6rem 2.5rem
+
+        &-wrapper
+            &:not(:last-of-type)
+                margin-bottom: 3rem
+
+            @media screen and (min-width: $laptop)
+                width: calc(50% - 4rem)
+
+    &__selection
+        &-wrapper
+            cursor: grab
+            display: flex
+            overflow-x: auto
+            padding: 0 2.5rem
+            margin-left: -2.5rem
+            width: calc(100% + 5rem)
+            background-color: $color-grey-light
+
+            scrollbar-width: none  // Firefox 
+            -ms-overflow-style: none  // Internet Explorer 10+ 
+
+            &::-webkit-scrollbar 
+                display: none  // Safari and Chrome 
+
+            @media screen and (min-width: $laptop)
+                margin: 0
+                padding: 0
+                width: 100%
+                border-radius: $border-radius
+
+        &-option
+            font-size: 2.4rem
+            color: $color-grey-dark
+            padding: 1.75rem 2.5rem
+
+            &--active
+                background-color: $color-white
+
+                span
+                    font-weight: bold
+                    color: $color-primary
+
+    &__options
+        &-wrapper
+            flex-wrap: wrap
+            margin-bottom: -1rem
+
+            @media screen and (min-width: $laptop)
+                margin-bottom: -1.5rem
+
+        &-item
+            font-weight: 500
+            font-size: 1.6rem
+            padding: 1rem 2rem
+            margin-bottom: 1rem
+            border-radius: $border-radius
+            background-color: $color-grey-light
+
+            svg
+                margin-right: 1rem
+
+            &:not(:last-child)
+                margin-right: 1rem
+
+            @media screen and (min-width: $laptop)
+                padding: 1.5rem 3rem
+                margin-bottom: 1.5rem
+
+                svg
+                    width: 1.9rem
+                    height: 1.9rem
+
+                &:not(:last-child)
+                    margin-right: 2rem
+
+    &__submit
+        width: 100%
+        margin-top: 3.5rem
+        background-color: $color-primary
