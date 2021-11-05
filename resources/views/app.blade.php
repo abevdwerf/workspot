@@ -21,7 +21,7 @@
     <main>
         <div class="main__wrap">
             <section class="finder">
-                <form class="form__group" action="{{ url("app") }}" method="POST">
+                <form class="form__group" action="{{ url("rooms") }}" method="POST">
                     @csrf
                     @method('get')
                     <div class="form__input-wrapper">
@@ -109,22 +109,26 @@
                 </form>
             </section>
 
-            <section class="intro flex">
-                <img class="intro__image"src="./img/detective.svg" alt="Detective looking for a workspace">
-
-                <div class="intro__content">
-                    <h1 class="h1">Find your perfect workspace</h1>
-
-                    <p>
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                        ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
-                        dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
-                        sit amet.
-                    </p>
-<!-- 
-                    <a class="btn" href="#">Use WorkSpot</a> -->
+            <div class="room__rooms">
+                <div class="container">
+                    @for ($i = 0; $i < 8; $i++)
+                        <a href="{{ url('workspace') }}" class="room">
+                            <div class="room__content flex">
+                                <h3 class="h3">OIL 0.10</h3>
+                                <span class="room__floor">1st floor</span>
+                            </div>
+                
+                            <span class="room__spots flex">
+                                <span class="room__highlight">5 / 100</span> Spots
+                            </span>
+                        </a>
+                    @endfor
                 </div>
-            </section>
+            </div>
+
+            <div class="workspace flex">
+                <img class="workspace__image" src="./img/workspace.png" alt="Floor plan of workspace">
+            </div>
         </div>
     </main>
 

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header class="header header--front-page">
+    <header class="header">
         <div class="container">
             <a class="header__logo" href="./">
                 <img src="{{asset('./img/workspot-logo-white.svg')}}" alt="Workspot Logo">
@@ -44,8 +44,8 @@
             </a>
         </div>
 
-        <div class="workspace">
-            <div class="container">
+        <div class="container">
+            <div class="workspace">
                 <img class="workspace__image" src="./img/workspace.png" alt="Floor plan of workspace">
             </div>
         </div>

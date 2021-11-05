@@ -16,6 +16,10 @@
         return view('index');
     });
 
+    Route::get('app', function () {
+        return view('app');
+    });
+
     Route::get('rooms', function () {
         return view('rooms');
     });

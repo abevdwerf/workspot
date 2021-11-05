@@ -1,31 +1,32 @@
 .intro
+    flex: 1
     display: none
+    padding: 5rem
+    margin-left: 3rem
+    color: $color-white
+    text-align: center
+    flex-direction: column
+    justify-content: center
+    border-radius: $border-radius-big
     background-image: linear-gradient(to left bottom, $color-primary 35%, $color-primary-dark)
 
-    .container
-        justify-content: space-between
-
     &__image
-        margin-right: 10rem
+        display: none
+        max-width: 45%
+        margin-bottom: 5rem
 
-        img
-            width: 36rem
-
-            @media screen and (min-width: $laptop-m)
-                width: 45rem
+        @media screen and (min-width: $laptop-m)
+            display: block
 
     &__content
-        color: $color-white
-
         p
-            margin: 3.5rem 0
             line-height: 2.1
             font-size: 1.7rem
+            margin-top: 2.25rem
 
     .btn
         padding-left: 6rem
         padding-right: 6rem
 
     @media screen and (min-width: $laptop)
-        display: block
-        padding: 12rem 0
+        display: flex

@@ -246,16 +246,16 @@ a {
 }
 @media screen and (min-width: 1024px) {
   .room__rooms {
-    overflow: scroll;
+    overflow: auto;
   }
 }
 
 .header {
-  overflow: hidden;
   padding: 2rem 0;
   background-image: linear-gradient(to right bottom, #A200FF 35%, #330061);
 }
 .header--front-page {
+  padding: 2rem 0 0;
   margin-bottom: -2rem;
 }
 .header--front-page .header__logo {
@@ -295,7 +295,7 @@ a {
   display: none;
   width: 24.75rem;
   padding-top: 1.5rem;
-  margin: 0 auto -3.35rem;
+  margin: 0 auto -5.35rem;
 }
 @media screen and (min-width: 1024px) {
   .header__illustration {
@@ -303,25 +303,28 @@ a {
     padding-top: 0;
     margin-right: 0;
     height: 18.25rem;
-    margin-top: 2.5rem;
     display: block !important;
+    margin: 2.5rem 0 -3.35rem auto;
   }
 }
 @media screen and (min-width: 1024px) {
   .header {
     margin: 0;
     padding: 0;
+    overflow: hidden;
     background-image: linear-gradient(to right, #A200FF 35%, #330061);
   }
 }
 
 .finder {
+  align-self: flex-start;
   padding: 2rem 2.5rem 2rem;
   background-color: #ffffff;
 }
 @media screen and (min-height: 810px) {
   .finder {
     padding: 5rem 2.5rem 2.5rem;
+    border-radius: 1.5rem;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -361,30 +364,31 @@ a {
 }
 
 .intro {
+  flex: 1;
   display: none;
+  padding: 5rem;
+  margin-left: 3rem;
+  color: #ffffff;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 1.5rem;
   background-image: linear-gradient(to left bottom, #A200FF 35%, #330061);
 }
-.intro .container {
-  justify-content: space-between;
-}
 .intro__image {
-  margin-right: 10rem;
-}
-.intro__image img {
-  width: 36rem;
+  display: none;
+  max-width: 45%;
+  margin-bottom: 5rem;
 }
 @media screen and (min-width: 1440px) {
-  .intro__image img {
-    width: 45rem;
+  .intro__image {
+    display: block;
   }
 }
-.intro__content {
-  color: #ffffff;
-}
 .intro__content p {
-  margin: 3.5rem 0;
   line-height: 2.1;
   font-size: 1.7rem;
+  margin-top: 2.25rem;
 }
 .intro .btn {
   padding-left: 6rem;
@@ -392,8 +396,7 @@ a {
 }
 @media screen and (min-width: 1024px) {
   .intro {
-    display: block;
-    padding: 12rem 0;
+    display: flex;
   }
 }
 

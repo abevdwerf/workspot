@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header class="header header--front-page">
+    <header class="header">
         <div class="container">
             <a class="header__logo" href="./">
                 <img src="{{asset('./img/workspot-logo-white.svg')}}" alt="Workspot Logo">
@@ -39,8 +39,8 @@
             </div>
         </div>
 
-        <div class="room__rooms">
-            <div class="container">
+        <div class="container">
+            <div class="room__rooms">
                 @for ($i = 0; $i < 10; $i++)
                     <a href="{{ url('workspace') }}" class="room">
                         <div class="room__content flex">
