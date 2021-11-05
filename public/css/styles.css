@@ -16,6 +16,14 @@ body {
   font-size: 1.5rem;
   background-color: #F9F9F9;
 }
+body.front-page .room__rooms, body.front-page .workspace {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  body.front-page .room__rooms, body.front-page .workspace {
+    display: block;
+  }
+}
 
 main {
   padding: 2rem 0;

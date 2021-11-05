@@ -7,7 +7,7 @@
     <title>Workspot | Find your spot</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="front-page">
     <header class="header header--front-page">
         <div class="container">
             <a class="header__logo" href="./">
