@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header class="header">
+    <header class="header header--front-page">
         <div class="container">
             <img class="header__logo" src="{{asset('./img/workspot-logo-white.svg')}}" alt="Workspot Logo">
 
@@ -23,7 +23,7 @@
     <main>
         <div class="container">
             <section class="finder">
-                <form class="form__group" action="./" method="post">
+                <form class="form__group" action="{{ url("./rooms") }}" method="post">
                     <div class="form__input-wrapper">
                         <label class="form__label flex" for="location-input">
                             <svg xmlns="http://www.w3.org/2000/svg" width="11.667" height="16.667" viewBox="0 0 11.667 16.667"><path d="M10.833,2A5.829,5.829,0,0,0,5,7.833c0,4.375,5.833,10.833,5.833,10.833s5.833-6.458,5.833-10.833A5.829,5.829,0,0,0,10.833,2Zm0,7.917a2.083,2.083,0,1,1,2.083-2.083A2.084,2.084,0,0,1,10.833,9.917Z" transform="translate(-5 -2)" fill="#b1b1b1"/></svg>

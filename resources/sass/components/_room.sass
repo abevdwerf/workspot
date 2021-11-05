@@ -1,0 +1,38 @@
+.room
+    display: block
+    padding: 2rem 3rem 1rem
+    align-items: center
+    border-radius: $border-radius
+    background-color: $color-white
+    justify-content: space-between
+    border: solid .1rem $color-grey-light
+    transition: background-color $transition-fast
+
+    &__content, &__spots
+        margin-bottom: 1rem
+
+    &__floor
+        font-size: 1.4rem
+        margin-left: 1rem
+        color: $color-grey
+
+    &__spots
+        font-size: 1.4rem
+        color: $color-grey
+
+    &__highlight
+        font-weight: 600
+        font-size: 1.5rem
+        margin-right: .6rem
+        color: $color-thirdiary
+
+    @media screen and (min-width: 375px)
+        display: flex
+
+.room__rooms
+    .room
+        &:hover
+            background-color: $color-grey-light
+
+        &:not(:last-child)
+            margin-bottom: 1rem

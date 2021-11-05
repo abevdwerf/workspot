@@ -23,12 +23,37 @@ body {
 
 main {
   background-color: #ffffff;
-  border-radius: 1.5rem;
+}
+@media screen and (min-height: 810px) {
+  main {
+    border-radius: 1.5rem;
+  }
+}
+main.main--backlight {
+  padding: 2rem 0;
+  min-height: calc(100vh - 9rem);
+  background-color: #F9F9F9;
+}
+@media screen and (min-height: 810px) {
+  main.main--backlight {
+    border-radius: 0;
+  }
+}
+@media screen and (min-width: 1024px) {
+  main.main--backlight {
+    padding: 4rem 0 5rem;
+  }
 }
 
 h1, .h1 {
   font-size: 4rem;
   font-weight: 800;
+}
+
+h3, .h3 {
+  font-weight: 600;
+  font-size: 1.8rem;
+  text-transform: uppercase;
 }
 
 a {
@@ -198,11 +223,67 @@ a {
   background-color: #A200FF;
 }
 
+.room {
+  display: block;
+  padding: 2rem 3rem 1rem;
+  align-items: center;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  justify-content: space-between;
+  border: solid 0.1rem #F0F0F0;
+  transition: background-color 0.3s ease-out;
+}
+.room__content, .room__spots {
+  margin-bottom: 1rem;
+}
+.room__floor {
+  font-size: 1.4rem;
+  margin-left: 1rem;
+  color: #B1B1B1;
+}
+.room__spots {
+  font-size: 1.4rem;
+  color: #B1B1B1;
+}
+.room__highlight {
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-right: 0.6rem;
+  color: #006DFF;
+}
+@media screen and (min-width: 375px) {
+  .room {
+    display: flex;
+  }
+}
+
+.room__rooms .room:hover {
+  background-color: #F0F0F0;
+}
+.room__rooms .room:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
 .header {
   overflow: hidden;
-  padding: 2.5rem 0;
-  margin-bottom: -2.5rem;
+  padding: 2rem 0;
+  margin-bottom: -2rem;
   background-image: linear-gradient(to right bottom, #A200FF 35%, #330061);
+}
+.header--front-page .header__logo {
+  width: 15rem;
+  margin: 2rem auto 5rem;
+}
+@media screen and (min-height: 810px) {
+  .header--front-page .header__logo {
+    width: 10rem;
+    margin: 0 auto 2.5rem;
+  }
+}
+@media screen and (min-height: 810px) {
+  .header--front-page .header__illustration {
+    display: block;
+  }
 }
 @media screen and (min-width: 1024px) {
   .header .container {
@@ -216,15 +297,15 @@ a {
   }
 }
 .header__logo {
-  width: 9rem;
+  width: 10rem;
   display: block;
-  margin: 0 auto 4rem;
+  margin: 0 auto 2.5rem;
 }
 @media screen and (min-width: 1024px) {
   .header__logo {
-    width: 20rem;
-    margin-top: 4.5rem;
-    margin-bottom: 6rem;
+    width: 20rem !important;
+    margin-top: 4.5rem !important;
+    margin-bottom: 6rem !important;
   }
 }
 .header__input {
@@ -243,15 +324,18 @@ a {
   }
 }
 .header__illustration {
-  display: block;
+  display: none;
   width: 24.75rem;
+  padding-top: 1.5rem;
   margin: 0 auto -3.35rem;
 }
 @media screen and (min-width: 1024px) {
   .header__illustration {
     width: 32.5rem;
+    padding-top: 0;
     margin-top: 3.5rem;
     margin-bottom: -12.5rem;
+    display: block !important;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -263,7 +347,12 @@ a {
 }
 
 .finder {
-  padding: 5rem 0 2.5rem;
+  padding: 2rem 0 2rem;
+}
+@media screen and (min-height: 810px) {
+  .finder {
+    padding: 5rem 0 2.5rem;
+  }
 }
 @media screen and (min-width: 1024px) {
   .finder {
@@ -286,6 +375,40 @@ a {
     position: absolute;
     width: calc(50% - 4rem);
     background-color: #2B2B2B;
+  }
+}
+
+.breadcrumb {
+  margin-bottom: 2rem;
+  align-items: stretch;
+  justify-content: space-between;
+}
+.breadcrumb__back-btn, .breadcrumb__spots-btn {
+  font-weight: 500;
+  font-size: 1.3rem;
+  color: #B1B1B1;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  border: solid 0.1rem #F0F0F0;
+}
+.breadcrumb__back-btn svg, .breadcrumb__spots-btn svg {
+  height: 1.2rem;
+  fill: #B1B1B1;
+  margin-right: 1rem;
+}
+.breadcrumb__spots-btn {
+  color: #2B2B2B;
+}
+.breadcrumb__spots-btn svg {
+  fill: #2B2B2B;
+  margin: 0 0 0 1rem;
+  transform: rotate(-90deg);
+}
+@media screen and (min-width: 1024px) {
+  .breadcrumb {
+    margin-bottom: 9rem;
+    width: calc(100% - 37.5rem);
   }
 }
 
@@ -323,5 +446,20 @@ a {
   .intro {
     display: block;
     padding: 12rem 0;
+  }
+}
+
+.workspace {
+  margin-top: 3rem;
+}
+.workspace__image {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  max-width: 36rem;
+}
+@media screen and (min-width: 1024px) {
+  .workspace {
+    margin-top: 6rem;
   }
 }

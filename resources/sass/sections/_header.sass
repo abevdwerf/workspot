@@ -1,8 +1,22 @@
 .header
     overflow: hidden
-    padding: 2.5rem 0
-    margin-bottom: -2.5rem
+    padding: 2rem 0
+    margin-bottom: -2rem
     background-image: linear-gradient(to right bottom, $color-primary 35%, $color-primary-dark)
+
+    &--front-page
+        .header__logo
+            width: 15rem
+            margin: 2rem auto 5rem
+
+            @media screen and (min-height: 810px)
+                width: 10rem
+                margin: 0 auto 2.5rem
+
+        .header__illustration
+            @media screen and (min-height: 810px)
+                display: block
+
 
     .container
         @media screen and (min-width: $laptop)
@@ -15,14 +29,14 @@
                 margin-right: 0
 
     &__logo
-        width: 9rem
+        width: 10rem
         display: block
-        margin: 0 auto 4rem
+        margin: 0 auto 2.5rem
 
         @media screen and (min-width: $laptop)
-            width: 20rem
-            margin-top: 4.5rem
-            margin-bottom: 6rem
+            width: 20rem !important
+            margin-top: 4.5rem !important
+            margin-bottom: 6rem !important
 
     &__input
         flex: 1
@@ -38,14 +52,17 @@
             display: block
 
     &__illustration
-        display: block
+        display: none
         width: 24.75rem
+        padding-top: 1.5rem
         margin: 0 auto -3.35rem
 
         @media screen and (min-width: $laptop)
             width: 32.5rem
+            padding-top: 0            
             margin-top: 3.5rem
             margin-bottom: -12.5rem
+            display: block !important
     
     @media screen and (min-width: $laptop)
         margin: 0

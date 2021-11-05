@@ -17,4 +17,17 @@ body
 
 main
     background-color: $color-white
-    border-radius: $border-radius-big
+
+    @media screen and (min-height: 810px)
+        border-radius: $border-radius-big
+
+    &.main--backlight
+        padding: 2rem 0
+        min-height: calc(100vh - 9rem)
+        background-color: $color-grey-backlight
+
+        @media screen and (min-height: 810px)
+            border-radius: 0
+
+        @media screen and (min-width: $laptop)
+            padding: 4rem 0 5rem
