@@ -19,7 +19,8 @@ class CreateRoomsTable extends Migration
             $table->string('type');
             $table->integer('seats_total');
             $table->integer('seats_available');
-            $table->string('highlighted_map');
+            $table->boolean('reserved');
+            $table->string('highlighted_map')->nullable();
             $table->timestamps();
         });
     }
