@@ -16,8 +16,8 @@ class CreateTablesTable extends Migration
         Schema::create('tables', function (Blueprint $table) {
             $table->id();
             $table->foreignId('room_id')->constrained();
-            $table->integer('seats');
-            $table->integer('seats_occupied');
+            $table->integer('seats_total');
+            $table->integer('seats_available');
             $table->timestamps();
         });
     }
