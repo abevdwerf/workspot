@@ -11,37 +11,27 @@ html {
   font-size: 62.5%;
   font-family: "Montserrat", sans-serif;
 }
-@media screen and (min-width: 1600px) {
-  html {
-    font-size: 0.625vw;
-  }
-}
 
 body {
   font-size: 1.5rem;
+  background-color: #F9F9F9;
 }
 
 main {
-  background-color: #ffffff;
-}
-@media screen and (min-height: 810px) {
-  main {
-    border-radius: 1.5rem;
-  }
-}
-main.main--backlight {
   padding: 2rem 0;
-  min-height: calc(100vh - 9rem);
-  background-color: #F9F9F9;
 }
-@media screen and (min-height: 810px) {
-  main.main--backlight {
-    border-radius: 0;
+@media screen and (min-width: 1024px) {
+  main {
+    padding: 3rem 5rem;
   }
 }
 @media screen and (min-width: 1024px) {
-  main.main--backlight {
-    padding: 4rem 0 5rem;
+  main .main__wrap {
+    display: flex;
+    margin: 0 auto;
+    max-width: 130rem;
+    justify-content: center;
+    height: calc(100vh - 23.4rem);
   }
 }
 
@@ -75,11 +65,6 @@ a {
     padding: 0 5rem;
   }
 }
-@media screen and (min-width: 1440px) {
-  .container {
-    padding: 0;
-  }
-}
 
 .btn {
   border: none;
@@ -102,13 +87,6 @@ a {
   }
 }
 
-@media screen and (min-width: 1024px) {
-  .form__group {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-}
 .form__label {
   font-weight: 500;
   font-size: 1.4rem;
@@ -140,11 +118,6 @@ a {
 }
 .form__input-wrapper:not(:last-of-type) {
   margin-bottom: 3rem;
-}
-@media screen and (min-width: 1024px) {
-  .form__input-wrapper {
-    width: calc(50% - 4rem);
-  }
 }
 .form__selection-wrapper {
   cursor: -webkit-grab;
@@ -245,6 +218,11 @@ a {
   font-size: 1.4rem;
   color: #B1B1B1;
 }
+@media screen and (min-width: 425px) {
+  .room__spots {
+    margin-left: 4rem;
+  }
+}
 .room__highlight {
   font-weight: 600;
   font-size: 1.5rem;
@@ -257,18 +235,28 @@ a {
   }
 }
 
+.room__rooms .container {
+  padding: 0 3rem;
+}
 .room__rooms .room:hover {
   background-color: #F0F0F0;
 }
 .room__rooms .room:not(:last-child) {
   margin-bottom: 1rem;
 }
+@media screen and (min-width: 1024px) {
+  .room__rooms {
+    overflow: scroll;
+  }
+}
 
 .header {
   overflow: hidden;
   padding: 2rem 0;
-  margin-bottom: -2rem;
   background-image: linear-gradient(to right bottom, #A200FF 35%, #330061);
+}
+.header--front-page {
+  margin-bottom: -2rem;
 }
 .header--front-page .header__logo {
   width: 15rem;
@@ -291,36 +279,16 @@ a {
     align-items: center;
     justify-content: space-between;
   }
-  .header .container > * {
-    margin-left: 0;
-    margin-right: 0;
-  }
 }
 .header__logo {
   width: 10rem;
   display: block;
-  margin: 0 auto 2.5rem;
+  margin: 0 auto;
 }
 @media screen and (min-width: 1024px) {
   .header__logo {
-    width: 20rem !important;
-    margin-top: 4.5rem !important;
-    margin-bottom: 6rem !important;
-  }
-}
-.header__input {
-  flex: 1;
-  display: none;
-  margin: 0 8rem !important;
-}
-.header__input input {
-  color: #ffffff;
-  background-color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.25);
-}
-@media screen and (min-width: 1024px) {
-  .header__input {
-    display: block;
+    width: 17.5rem !important;
+    margin: 2rem 0 !important;
   }
 }
 .header__illustration {
@@ -331,10 +299,11 @@ a {
 }
 @media screen and (min-width: 1024px) {
   .header__illustration {
-    width: 32.5rem;
+    width: auto;
     padding-top: 0;
-    margin-top: 3.5rem;
-    margin-bottom: -12.5rem;
+    margin-right: 0;
+    height: 18.25rem;
+    margin-top: 2.5rem;
     display: block !important;
   }
 }
@@ -342,39 +311,24 @@ a {
   .header {
     margin: 0;
     padding: 0;
-    overflow: inherit;
+    background-image: linear-gradient(to right, #A200FF 35%, #330061);
   }
 }
 
 .finder {
-  padding: 2rem 0 2rem;
+  padding: 2rem 2.5rem 2rem;
+  background-color: #ffffff;
 }
 @media screen and (min-height: 810px) {
   .finder {
-    padding: 5rem 0 2.5rem;
+    padding: 5rem 2.5rem 2.5rem;
   }
 }
 @media screen and (min-width: 1024px) {
   .finder {
-    padding: 4rem 0 5rem;
-    width: calc(100% - 37.5rem);
-  }
-  .finder .form__group {
-    position: relative;
-  }
-  .finder .form__group .form__input-wrapper:first-child {
-    display: none;
-  }
-  .finder .form__group .form__input-wrapper:nth-child(2) {
-    padding-bottom: 4.5rem;
-  }
-  .finder .form__group .form__submit {
-    left: 0;
-    bottom: 0;
-    margin: 0;
-    position: absolute;
-    width: calc(50% - 4rem);
-    background-color: #2B2B2B;
+    max-width: 45rem;
+    padding: 4rem 3.5rem;
+    box-shadow: 0 0 12px #F0F0F0;
   }
 }
 
@@ -404,12 +358,6 @@ a {
   fill: #2B2B2B;
   margin: 0 0 0 1rem;
   transform: rotate(-90deg);
-}
-@media screen and (min-width: 1024px) {
-  .breadcrumb {
-    margin-bottom: 9rem;
-    width: calc(100% - 37.5rem);
-  }
 }
 
 .intro {
@@ -456,10 +404,15 @@ a {
   width: 80%;
   display: block;
   margin: 0 auto;
-  max-width: 36rem;
+  max-width: 30rem;
 }
 @media screen and (min-width: 1024px) {
   .workspace {
-    margin-top: 6rem;
+    flex: 1;
+    margin-top: 0;
+    padding: 3rem;
+    box-shadow: 0 0 12px #F0F0F0;
+    border-radius: 0.5rem;
+    background-color: #ffffff;
   }
 }

@@ -9,25 +9,23 @@ html
     font-size: 62.5%
     font-family: 'Montserrat', sans-serif
 
-    @media screen and (min-width: 1600px)
-        font-size: .625vw
+    // @media screen and (min-width: 1600px)
+    //     font-size: .625vw
 
 body
     font-size: 1.5rem
+    background-color: $color-grey-backlight
 
 main
-    background-color: $color-white
+    padding: 2rem 0
 
-    @media screen and (min-height: 810px)
-        border-radius: $border-radius-big
-
-    &.main--backlight
-        padding: 2rem 0
-        min-height: calc(100vh - 9rem)
-        background-color: $color-grey-backlight
-
-        @media screen and (min-height: 810px)
-            border-radius: 0
-
+    @media screen and (min-width: $laptop)
+        padding: 3rem 5rem
+        
+    .main__wrap
         @media screen and (min-width: $laptop)
-            padding: 4rem 0 5rem
+            display: flex
+            margin: 0 auto
+            max-width: 130rem
+            justify-content: center
+            height: calc(100vh - 23.4rem)

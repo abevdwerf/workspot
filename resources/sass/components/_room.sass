@@ -20,19 +20,28 @@
         font-size: 1.4rem
         color: $color-grey
 
+        @media screen and (min-width: $mobile-l)
+            margin-left: 4rem
+
     &__highlight
         font-weight: 600
         font-size: 1.5rem
         margin-right: .6rem
         color: $color-thirdiary
 
-    @media screen and (min-width: 375px)
+    @media screen and (min-width: $mobile-m)
         display: flex
 
 .room__rooms
+    .container
+        padding: 0 3rem
+
     .room
         &:hover
             background-color: $color-grey-light
 
         &:not(:last-child)
             margin-bottom: 1rem
+
+    @media screen and (min-width: $laptop)
+        overflow: scroll

@@ -8,13 +8,11 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header class="header">
+    <header class="header header--front-page">
         <div class="container">
-            <img class="header__logo" src="{{asset('./img/workspot-logo-white.svg')}}" alt="Workspot Logo">
-
-            <div class="header__input">
-                <input type="text" class="form__input" value="R10, Eindhoven">
-            </div>
+            <a class="header__logo" href="./">
+                <img src="{{asset('./img/workspot-logo-white.svg')}}" alt="Workspot Logo">
+            </a>
 
             <img class="header__illustration" src="{{asset('./img/working-person-illustration.svg')}}" alt="Illustration of a working person">
         </div>

@@ -10,20 +10,19 @@
 <body>
     <header class="header header--front-page">
         <div class="container">
-            <img class="header__logo" src="{{asset('./img/workspot-logo-white.svg')}}" alt="Workspot Logo">
-
-            <div class="header__input">
-                <input type="text" class="form__input" value="R10, Eindhoven">
-            </div>
+            <a class="header__logo" href="./">
+                <img src="{{asset('./img/workspot-logo-white.svg')}}" alt="Workspot Logo">
+            </a>
 
             <img class="header__illustration" src="{{asset('./img/working-person-illustration.svg')}}" alt="Illustration of a working person">
         </div>
     </header>
 
     <main>
-        <div class="container">
+        <div class="main__wrap">
             <section class="finder">
-                <form class="form__group" action="{{ url("./rooms") }}" method="post">
+                <form class="form__group" action="{{ url("rooms") }}" method="post">
+                    
                     <div class="form__input-wrapper">
                         <label class="form__label flex" for="location-input">
                             <svg xmlns="http://www.w3.org/2000/svg" width="11.667" height="16.667" viewBox="0 0 11.667 16.667"><path d="M10.833,2A5.829,5.829,0,0,0,5,7.833c0,4.375,5.833,10.833,5.833,10.833s5.833-6.458,5.833-10.833A5.829,5.829,0,0,0,10.833,2Zm0,7.917a2.083,2.083,0,1,1,2.083-2.083A2.084,2.084,0,0,1,10.833,9.917Z" transform="translate(-5 -2)" fill="#b1b1b1"/></svg>
@@ -108,29 +107,30 @@
                     <input class="form__submit btn" type="submit" value="Find workspace"></input>
                 </form>
             </section>
-        </div>
-    
-        <section class="intro">
-            <div class="container flex">
-                <div class="intro__image">
-                    <img src="{{asset('./img/detective.svg')}}" alt="Detective looking for a workspace">
-                </div>
 
-                <div class="intro__content">
-                    <h1 class="h1">Find your perfect workspace</h1>
-
-                    <p>
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                        ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
-                        dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
-                        sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                        invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
-                    </p>
-
-                    <a class="btn" href="#">Use WorkSpot</a>
+            <div class="room__rooms">
+                <div class="container">
+                    @for ($i = 0; $i < 8; $i++)
+                        <a href="{{ url('workspace') }}" class="room">
+                            <div class="room__content flex">
+                                <h3 class="h3">OIL 0.10</h3>
+                                <span class="room__floor">1st floor</span>
+                            </div>
+                
+                            <span class="room__spots flex">
+                                <span class="room__highlight">5 / 100</span> Spots
+                            </span>
+                        </a>
+                    @endfor
                 </div>
             </div>
-        </section>
+
+            <div class="workspace flex">
+                <img class="workspace__image" src="./img/workspace.png" alt="Floor plan of workspace">
+            </div>
+        </div>
     </main>
+
+    <script src="js/app.js" type="text/javascript"></script>
 </body>
 </html>
