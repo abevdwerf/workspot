@@ -71,7 +71,7 @@
                                 Silent Room
                             </a>
                             <a class="form__options-item flex" href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="9.256" height="15" viewBox="0 0 9.256 15">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="9.256" height="15" viewBox="0 0 9.256 15" >
                                     <g id="Group" transform="translate(-21.8 -4.3)">
                                         <path id="Compound_Path" data-name="Compound Path" d="M22.867,4.3v6.236H21.8v3.151h4.136v1.74l-2.609,3.151.755.624,1.854-2.232V19.3h.985V16.97L28.775,19.2l.755-.624L26.92,15.427v-1.74h4.136V10.536H29.989V4.3Zm.985.985H29v5.252H23.851Zm6.22,7.418H22.785V11.521h7.287Z" fill="#151515"/>
                                     </g>
@@ -132,5 +132,6 @@
             </div>
         </section>
     </main>
+    <script type="text/javascript" src="js/app.js" ></script>
 </body>
 </html>
