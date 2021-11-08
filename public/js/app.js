@@ -7,43 +7,36 @@
   \*****************************/
 /***/ (() => {
 
-//require('./bootstrap');
-var numberOfPeople = document.querySelectorAll('.form__selection-option');
+// Variables
+var roomOption = document.querySelectorAll('.form__options-item');
+var personAmount = document.querySelectorAll('.form__selection-option'); // Select a number of persons
 
 var _loop = function _loop(i) {
-  //get onclick element
-  numberOfPeople[i].onclick = function () {
+  personAmount[i].onclick = function () {
     //set all elements same style
     var c = 0;
 
-    while (c < numberOfPeople.length) {
-      numberOfPeople[c++].className = 'form__selection-option';
+    while (c < personAmount.length) {
+      personAmount[c++].className = 'form__selection-option';
     } //set active style
 
 
-    numberOfPeople[i].classList.add('form__selection-option--active');
+    personAmount[i].classList.add('form__selection-option--active');
   };
 };
 
-for (var i = 0; i < numberOfPeople.length; i++) {
+for (var i = 0; i < personAmount.length; i++) {
   _loop(i);
-}
+} // Toggle an room option
 
-var types = document.querySelectorAll('.form__options-item');
 
 var _loop2 = function _loop2(_i) {
-  //get onclick element
-  types[_i].onclick = function () {
-    //add active style if it not exist
-    if (!types[_i].classList.contains('form__options-item--active')) {
-      types[_i].classList.add('form__options-item--active');
-    } else {
-      types[_i].className = 'form__options-item';
-    }
+  roomOption[_i].onclick = function () {
+    if (!roomOption[_i].classList.contains('form__options-item--active')) roomOption[_i].classList.add('form__options-item--active');else roomOption[_i].className = 'form__options-item';
   };
 };
 
-for (var _i = 0; _i < types.length; _i++) {
+for (var _i = 0; _i < roomOption.length; _i++) {
   _loop2(_i);
 }
 
