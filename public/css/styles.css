@@ -173,6 +173,14 @@ a {
   border-radius: 0.5rem;
   background-color: #F0F0F0;
 }
+.form__options-item--active {
+  color: #ffffff;
+  background-color: #2B2B2B;
+}
+.form__options-item--active svg {
+  fill: #ffffff;
+  stroke: #ffffff;
+}
 .form__options-item svg {
   margin-right: 1rem;
 }
