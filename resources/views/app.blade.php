@@ -5,7 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workspot | Find your spot</title>
+    
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('favicon/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('favicon/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('favicon/favicon-16x16.png')}}">
+    <link rel="manifest" href="{{asset('favicon/site.webmanifest')}}">
+    <link rel="mask-icon" href="{{asset('favicon/safari-pinned-tab.svg')}}" color="#a200ff">
+    <meta name="msapplication-TileColor" content="#a200ff">
+    <meta name="theme-color" content="#a200ff">
 </head>
 <body class="front-page">
     <header class="header header--front-page">
