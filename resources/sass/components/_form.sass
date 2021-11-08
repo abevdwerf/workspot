@@ -1,5 +1,6 @@
 .form
     &__label
+        cursor: pointer
         font-weight: 500
         font-size: 1.4rem
         color: $color-grey
@@ -30,9 +31,21 @@
             &:not(:last-of-type)
                 margin-bottom: 3rem
 
+            input[type="text"]
+                cursor: pointer
+                transition: background-color $transition-fast
+
+                &::placeholder
+                    transition: color $transition-fast
+                
+                &:hover
+                    background-color: $color-grey
+
+                    &::placeholder
+                        color: $color-white
+
     &__selection
         &-wrapper
-            cursor: grab
             display: flex
             overflow-x: auto
             padding: 0 2.5rem
@@ -53,9 +66,11 @@
                 border-radius: $border-radius
 
         &-option
+            cursor: pointer
             font-size: 2.4rem
             color: $color-grey-dark
             padding: 1.75rem 2.5rem
+            transition: background-color $transition-fast
 
             &--active
                 background-color: $color-white
@@ -63,6 +78,15 @@
                 span
                     font-weight: bold
                     color: $color-primary
+
+            &:hover
+                background-color: $color-grey
+
+                span
+                    color: $color-white
+
+            span
+                transition: color $transition-fast
 
     &__options
         &-wrapper
@@ -79,17 +103,26 @@
             margin-bottom: 1rem
             border-radius: $border-radius
             background-color: $color-grey-light
+            transition: background-color $transition-fast, color $transition-fast
 
             &--active
                 color: #ffffff
                 background-color: #2B2B2B
 
                 svg
-                    fill: $color-white
-                    stroke: $color-white
+                    fill: $color-white !important
 
             svg
+                fill: $color-black
                 margin-right: 1rem
+                transition: fill $transition-fast
+
+            &:hover
+                color: $color-white
+                background-color: $color-grey
+
+                svg
+                    fill: $color-white
 
             &:not(:last-child)
                 margin-right: 1rem

@@ -96,6 +96,7 @@ a {
 }
 
 .form__label {
+  cursor: pointer;
   font-weight: 500;
   font-size: 1.4rem;
   color: #B1B1B1;
@@ -127,9 +128,34 @@ a {
 .form__input-wrapper:not(:last-of-type) {
   margin-bottom: 3rem;
 }
+.form__input-wrapper input[type=text] {
+  cursor: pointer;
+  transition: background-color 0.25s ease-out;
+}
+.form__input-wrapper input[type=text]::-moz-placeholder {
+  -moz-transition: color 0.25s ease-out;
+  transition: color 0.25s ease-out;
+}
+.form__input-wrapper input[type=text]:-ms-input-placeholder {
+  -ms-transition: color 0.25s ease-out;
+  transition: color 0.25s ease-out;
+}
+.form__input-wrapper input[type=text]::placeholder {
+  transition: color 0.25s ease-out;
+}
+.form__input-wrapper input[type=text]:hover {
+  background-color: #B1B1B1;
+}
+.form__input-wrapper input[type=text]:hover::-moz-placeholder {
+  color: #ffffff;
+}
+.form__input-wrapper input[type=text]:hover:-ms-input-placeholder {
+  color: #ffffff;
+}
+.form__input-wrapper input[type=text]:hover::placeholder {
+  color: #ffffff;
+}
 .form__selection-wrapper {
-  cursor: -webkit-grab;
-  cursor: grab;
   display: flex;
   overflow-x: auto;
   padding: 0 2.5rem;
@@ -151,9 +177,11 @@ a {
   }
 }
 .form__selection-option {
+  cursor: pointer;
   font-size: 2.4rem;
   color: #666666;
   padding: 1.75rem 2.5rem;
+  transition: background-color 0.25s ease-out;
 }
 .form__selection-option--active {
   background-color: #ffffff;
@@ -161,6 +189,15 @@ a {
 .form__selection-option--active span {
   font-weight: bold;
   color: #A200FF;
+}
+.form__selection-option:hover {
+  background-color: #B1B1B1;
+}
+.form__selection-option:hover span {
+  color: #ffffff;
+}
+.form__selection-option span {
+  transition: color 0.25s ease-out;
 }
 .form__options-wrapper {
   flex-wrap: wrap;
@@ -178,17 +215,26 @@ a {
   margin-bottom: 1rem;
   border-radius: 0.5rem;
   background-color: #F0F0F0;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
 }
 .form__options-item--active {
   color: #ffffff;
   background-color: #2B2B2B;
 }
 .form__options-item--active svg {
-  fill: #ffffff;
-  stroke: #ffffff;
+  fill: #ffffff !important;
 }
 .form__options-item svg {
+  fill: #2B2B2B;
   margin-right: 1rem;
+  transition: fill 0.25s ease-out;
+}
+.form__options-item:hover {
+  color: #ffffff;
+  background-color: #B1B1B1;
+}
+.form__options-item:hover svg {
+  fill: #ffffff;
 }
 .form__options-item:not(:last-child) {
   margin-right: 1rem;
@@ -220,7 +266,7 @@ a {
   background-color: #ffffff;
   justify-content: space-between;
   border: solid 0.1rem #F0F0F0;
-  transition: background-color 0.3s ease-out;
+  transition: background-color 0.25s ease-out;
 }
 .room__content, .room__spots {
   margin-bottom: 1rem;

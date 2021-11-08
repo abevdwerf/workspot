@@ -8,6 +8,7 @@
 /***/ (() => {
 
 // Variables
+var locations = ["Fontys Nexus", "Fontys P1, Tilburg", "Fontys P2, Tilburg", "Fontys P3, Tilburg", "Fontys R3, Eindhoven", "Fontys R5, Eindhoven", "Fontys R6, Eindhoven", "Fontys R10, Eindhoven"];
 var roomOption = document.querySelectorAll('.form__options-item');
 var personAmount = document.querySelectorAll('.form__selection-option'); // Select a number of persons
 
@@ -32,7 +33,7 @@ for (var i = 0; i < personAmount.length; i++) {
 
 var _loop2 = function _loop2(_i) {
   roomOption[_i].onclick = function () {
-    if (!roomOption[_i].classList.contains('form__options-item--active')) roomOption[_i].classList.add('form__options-item--active');else roomOption[_i].className = 'form__options-item';
+    if (!roomOption[_i].classList.contains('form__options-item--active')) roomOption[_i].classList.add('form__options-item--active');else roomOption[_i].classList.remove('form__options-item--active');
   };
 };
 
