@@ -22,7 +22,7 @@
 
         &:focus
             outline: none
-            
+
         @media screen and (min-width: $laptop)
             padding: 1.6rem 2.5rem
 
@@ -40,11 +40,11 @@
             width: calc(100% + 5rem)
             background-color: $color-grey-light
 
-            scrollbar-width: none  // Firefox 
-            -ms-overflow-style: none  // Internet Explorer 10+ 
+            scrollbar-width: none  // Firefox
+            -ms-overflow-style: none  // Internet Explorer 10+
 
-            &::-webkit-scrollbar 
-                display: none  // Safari and Chrome 
+            &::-webkit-scrollbar
+                display: none  // Safari and Chrome
 
             @media screen and (min-width: $laptop)
                 margin: 0
@@ -79,6 +79,14 @@
             margin-bottom: 1rem
             border-radius: $border-radius
             background-color: $color-grey-light
+
+            &--active
+                color: #ffffff
+                background-color: #2B2B2B
+
+                svg
+                    fill: $color-white
+                    stroke: $color-white
 
             svg
                 margin-right: 1rem
