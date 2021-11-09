@@ -462,6 +462,9 @@ a {
 .room__rooms .container {
   padding: 0 3rem;
 }
+.room__rooms .room {
+  cursor: pointer;
+}
 .room__rooms .room:hover {
   background-color: #F0F0F0;
 }

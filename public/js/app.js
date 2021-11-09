@@ -81,6 +81,10 @@ document.getElementById("search-spot-form").onclick = function (event) {
       introSection.style.display = "none";
       roomsSection.style.display = "block";
       workspaceSection.style.display = "block";
+      setTimeout(function () {
+        roomsSection.style.zIndex = 1;
+        workspaceSection.style.zIndex = 1;
+      }, 1250);
     }, 1000);
   }
 };
