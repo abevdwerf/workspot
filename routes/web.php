@@ -12,11 +12,7 @@
     |
     */
 
-    Route::get('', [App\Http\Controllers\IndexController::class, 'allLocations']);
-
-    Route::get('./', function () {
-        return view('index');
-    });
+    Route::get('', [App\Http\Controllers\IndexController::class, 'beforeIndex']);
 
     Route::get('rooms', [App\Http\Controllers\RoomsController::class, 'findRooms']);
 

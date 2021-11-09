@@ -3,14 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Location;
+use App\Models\Room;
 
 class IndexController extends Controller
 {
-    public function allLocations()
+    public function beforeIndex()
     {
-
         $locations = Location::all();
+        $rooms = Room::all();
 
-        return view("index", ['locations' => $locations]);
+        $data = array(
+            'locations' => $locations,
+            'rooms' => $rooms
+        );
+
+        return view("index")->with($data);
     }
 }
