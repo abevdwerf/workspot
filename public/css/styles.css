@@ -282,11 +282,11 @@ a {
   margin-left: -2.5rem;
   width: calc(100% + 5rem);
   background-color: #F0F0F0;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
 }
-.form__selection-wrapper::-webkit-scrollbar {
-  display: none;
+@media screen and (max-width: 1024px) {
+  .form__selection-wrapper::-webkit-scrollbar {
+    display: none;
+  }
 }
 @media screen and (min-width: 1024px) {
   .form__selection-wrapper {

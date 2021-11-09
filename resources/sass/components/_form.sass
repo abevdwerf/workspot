@@ -92,11 +92,9 @@
             width: calc(100% + 5rem)
             background-color: $color-grey-light
 
-            scrollbar-width: none  // Firefox
-            -ms-overflow-style: none  // Internet Explorer 10+
-
-            &::-webkit-scrollbar
-                display: none  // Safari and Chrome
+            @media screen and (max-width: $laptop)
+                &::-webkit-scrollbar
+                    display: none 
 
             @media screen and (min-width: $laptop)
                 margin: 0
