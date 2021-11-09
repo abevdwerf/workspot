@@ -7,37 +7,69 @@
   \*****************************/
 /***/ (() => {
 
-// Variables
-var locations = ["Fontys Nexus", "Fontys P1, Tilburg", "Fontys P2, Tilburg", "Fontys P3, Tilburg", "Fontys R3, Eindhoven", "Fontys R5, Eindhoven", "Fontys R6, Eindhoven", "Fontys R10, Eindhoven"];
-var roomOption = document.querySelectorAll('.form__options-item');
-var personAmount = document.querySelectorAll('.form__selection-option'); // Select a number of persons
+var locations = ["Fontys Nexus", "Fontys P1, Tilburg", "Fontys P2, Tilburg", "Fontys P3, Tilburg", "Fontys R3, Eindhoven", "Fontys R5, Eindhoven", "Fontys R6, Eindhoven", "Fontys R10, Eindhoven"]; // Dropdown variables
+
+var previousDropdownChoise = null;
+var locationsDropdown = document.getElementById("locations-dropdown"); // Input variables
+
+var locationInput = document.getElementById("location-input");
+var numberOfPeopleInput = document.getElementById("location-number-of-people"); // Get specifying options
+
+var roomOptions = document.getElementsByClassName("form__options-item");
+var personAmountOptions = document.getElementsByClassName("form__selection-option");
+locations.forEach(function (location) {
+  var locationOption = document.createElement("a");
+  locationOption.innerHTML = location;
+  locationOption.className = "form__dropdown-option";
+  locationsDropdown.appendChild(locationOption);
+
+  locationOption.onclick = function () {
+    if (previousDropdownChoise != null) previousDropdownChoise.classList.remove("form__dropdown-option--selected");
+    previousDropdownChoise = locationOption;
+    locationInput.setAttribute("value", location);
+    locationOption.classList.add("form__dropdown-option--selected");
+    if (locationsDropdown.classList.contains("form__dropdown--active")) locationsDropdown.classList.remove("form__dropdown--active");else locationsDropdown.classList.add("form__dropdown--active");
+  };
+});
+
+locationInput.onclick = function () {
+  if (locationsDropdown.classList.contains("form__dropdown--active")) locationsDropdown.classList.remove("form__dropdown--active");else locationsDropdown.classList.add("form__dropdown--active");
+};
+
+locationInput.addEventListener("input", function (event) {
+  locationsDropdown.classList.add("form__dropdown--active");
+  locationsDropdown.childNodes.forEach(function (child) {
+    if (child.innerHTML.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1) child.style.display = "block";else child.style.display = "none";
+  });
+}); // Select a number of persons
 
 var _loop = function _loop(i) {
-  personAmount[i].onclick = function () {
+  personAmountOptions[i].onclick = function (event) {
     //set all elements same style
     var c = 0;
 
-    while (c < personAmount.length) {
-      personAmount[c++].className = 'form__selection-option';
+    while (c < personAmountOptions.length) {
+      personAmountOptions[c++].className = "form__selection-option";
     } //set active style
 
 
-    personAmount[i].classList.add('form__selection-option--active');
+    personAmountOptions[i].classList.add("form__selection-option--active");
+    numberOfPeopleInput.value = parseInt(event.target.firstChild.innerHTML);
   };
 };
 
-for (var i = 0; i < personAmount.length; i++) {
+for (var i = 0; i < personAmountOptions.length; i++) {
   _loop(i);
 } // Toggle an room option
 
 
 var _loop2 = function _loop2(_i) {
-  roomOption[_i].onclick = function () {
-    if (!roomOption[_i].classList.contains('form__options-item--active')) roomOption[_i].classList.add('form__options-item--active');else roomOption[_i].classList.remove('form__options-item--active');
+  roomOptions[_i].onclick = function () {
+    if (!roomOptions[_i].classList.contains("form__options-item--active")) roomOptions[_i].classList.add("form__options-item--active");else roomOptions[_i].classList.remove("form__options-item--active");
   };
 };
 
-for (var _i = 0; _i < roomOption.length; _i++) {
+for (var _i = 0; _i < roomOptions.length; _i++) {
   _loop2(_i);
 }
 

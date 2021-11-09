@@ -44,6 +44,45 @@
                     &::placeholder
                         color: $color-white
 
+    &__dropdown
+        left: 0
+        right: 0
+        top: 100%
+        z-index: 1
+        display: none
+        cursor: pointer
+        padding: 1.5rem
+        position: absolute
+        box-shadow: $box-shadow-dark
+        border-radius: $border-radius
+        background-color: $color-white
+
+        &--active
+            display: block
+
+            & + .form__input
+                color: $color-white
+                background-color: $color-grey
+
+                &::placeholder
+                    color: $color-white
+
+        &-option
+            display: block
+            font-weight: 500
+            padding: 1rem 1.75rem
+            color: $color-grey-dark
+            border-radius: $border-radius
+            transition: background-color $transition-fast, color $transition-fast
+
+            &--selected
+                color: $color-white !important
+                background-color: $color-primary !important
+
+            &:hover
+                color: $color-black
+                background-color: $color-grey-light
+
     &__selection
         &-wrapper
             display: flex
@@ -73,11 +112,11 @@
             transition: background-color $transition-fast
 
             &--active
-                background-color: $color-white
+                background-color: $color-white !important
 
                 span
-                    font-weight: bold
-                    color: $color-primary
+                    font-weight: bold !important
+                    color: $color-primary !important
 
             &:hover
                 background-color: $color-grey
@@ -86,6 +125,7 @@
                     color: $color-white
 
             span
+                pointer-events: none
                 transition: color $transition-fast
 
     &__options
@@ -100,6 +140,7 @@
             font-weight: 500
             font-size: 1.6rem
             padding: 1rem 2rem
+            position: relative
             margin-bottom: 1rem
             border-radius: $border-radius
             background-color: $color-grey-light
@@ -107,7 +148,7 @@
 
             &--active
                 color: #ffffff
-                background-color: #2B2B2B
+                background-color: #2B2B2B !important
 
                 svg
                     fill: $color-white !important
@@ -137,6 +178,17 @@
 
                 &:not(:last-child)
                     margin-right: 2rem
+
+        &-checkbox
+            top: 0
+            left: 0
+            right: 0
+            bottom: 0
+            opacity: 0
+            width: 100%
+            height: 100%
+            cursor: pointer
+            position: absolute
 
     &__submit
         width: 100%
