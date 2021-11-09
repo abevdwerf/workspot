@@ -44,12 +44,25 @@
             width: auto
             padding-top: 0
             margin-right: 0
-            height: 16.75rem
+            height: 15.75rem
             display: block !important
+            transform: translateX(100vw)
             margin: 2.5rem 0 -2.55rem auto
+            animation: illuSlide 1.5s forwards
     
     @media screen and (min-width: $laptop)
         margin: 0
         padding: 0
         overflow: hidden
         background-image: linear-gradient(to right, $color-primary 35%, $color-primary-dark)
+
+@keyframes illuSlide
+    0%
+        opacity: 0
+        transform: translateX(35vw)
+
+    60%
+        opacity: 1
+
+    100%
+        transform: translateX(0vw)

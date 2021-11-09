@@ -14,10 +14,14 @@ html {
 
 body {
   font-size: 1.5rem;
-  background-color: #F9F9F9;
+  overflow-x: hidden;
+  background-color: #fbfbfb;
 }
 body.front-page .room__rooms, body.front-page .workspace {
   display: none;
+}
+body.front-page .room__rooms {
+  max-width: 42rem;
 }
 body.front-page .room__rooms .container {
   display: flex;
@@ -49,7 +53,7 @@ main {
     margin: 0 auto;
     max-width: 130rem;
     justify-content: center;
-    min-height: calc(100vh - 26.7rem);
+    min-height: calc(100vh - 25.7rem);
   }
 }
 
@@ -336,8 +340,9 @@ a {
 
 .room {
   display: block;
-  padding: 2rem 3rem 1rem;
+  flex-wrap: wrap;
   align-items: center;
+  padding: 2rem 3rem 1rem;
   border-radius: 0.5rem;
   background-color: #ffffff;
   justify-content: space-between;
@@ -367,6 +372,34 @@ a {
   margin-right: 0.6rem;
   color: #006DFF;
 }
+.room__labels {
+  width: 100%;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+.room__label {
+  margin-bottom: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  background-color: #F0F0F0;
+  transition: background-color 0.25s ease-out;
+}
+.room__label svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 1rem;
+  fill: #666666;
+  transition: fill 0.25s ease-out;
+}
+.room__label-text {
+  font-weight: 500;
+  font-size: 0.8em;
+  color: #666666;
+  transition: color 0.25s ease-out;
+}
+.room__label:not(:last-child) {
+  margin-right: 1rem;
+}
 @media screen and (min-width: 375px) {
   .room {
     display: flex;
@@ -378,6 +411,15 @@ a {
 }
 .room__rooms .room:hover {
   background-color: #F0F0F0;
+}
+.room__rooms .room:hover .room__label {
+  background-color: #B1B1B1;
+}
+.room__rooms .room:hover .room__label svg {
+  fill: #ffffff;
+}
+.room__rooms .room:hover .room__label span {
+  color: #ffffff;
 }
 .room__rooms .room:not(:last-child) {
   margin-bottom: 1rem;
@@ -440,9 +482,12 @@ a {
     width: auto;
     padding-top: 0;
     margin-right: 0;
-    height: 16.75rem;
+    height: 15.75rem;
     display: block !important;
+    transform: translateX(100vw);
     margin: 2.5rem 0 -2.55rem auto;
+    -webkit-animation: illuSlide 1.5s forwards;
+            animation: illuSlide 1.5s forwards;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -454,6 +499,31 @@ a {
   }
 }
 
+@-webkit-keyframes illuSlide {
+  0% {
+    opacity: 0;
+    transform: translateX(35vw);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0vw);
+  }
+}
+
+@keyframes illuSlide {
+  0% {
+    opacity: 0;
+    transform: translateX(35vw);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0vw);
+  }
+}
 .finder {
   display: flex;
   flex-direction: column;
@@ -508,13 +578,18 @@ a {
 
 .intro {
   flex: 1;
+  opacity: 0;
+  z-index: -1;
   display: none;
   padding: 5rem;
   overflow: hidden;
   margin-left: 3rem;
-  color: #ffffff;
   text-align: center;
+  color: #ffffff;
   border-radius: 1.5rem;
+  transition: transform ease-out 0.5s;
+  -webkit-animation: slideFromRight 1.5s forwards;
+          animation: slideFromRight 1.5s forwards;
   background-image: linear-gradient(to left bottom, #A200FF 35%, #330061);
 }
 .intro__image {
@@ -541,7 +616,33 @@ a {
     display: flex;
   }
 }
+@media screen and (min-width: 1440px) {
+  .intro {
+    margin-left: 5rem;
+  }
+}
 
+@-webkit-keyframes slideFromRight {
+  0% {
+    opacity: 0;
+    transform: translateY(-100vh);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0vh);
+  }
+}
+
+@keyframes slideFromRight {
+  0% {
+    opacity: 0;
+    transform: translateY(-100vh);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0vh);
+  }
+}
 .workspace {
   margin-top: 3rem;
 }

@@ -1,3 +1,14 @@
+const locations = [
+    "Fontys Nexus",
+    "Fontys P1, Tilburg",
+    "Fontys P2, Tilburg",
+    "Fontys P3, Tilburg",
+    "Fontys R3, Eindhoven",
+    "Fontys R5, Eindhoven",
+    "Fontys R6, Eindhoven",
+    "Fontys R10, Eindhoven"
+];
+
 // Dropdown variables
 let previousDropdownChoise = null;
 let locationsDropdown = document.getElementById("locations-dropdown");
@@ -10,13 +21,17 @@ let numberOfPeopleInput = document.getElementById("location-number-of-people");
 let roomOptions = document.getElementsByClassName("form__options-item");
 let personAmountOptions = document.getElementsByClassName("form__selection-option");
 
-locationsDropdown.childNodes.forEach(location => {
-
-    location.onclick = function () {
+locations.forEach(location => {
+    let locationOption = document.createElement("a");
+    locationOption.innerHTML = location;
+    locationOption.className = "form__dropdown-option";
+    locationsDropdown.appendChild(locationOption);
+    
+    locationOption.onclick = function () {
         if (previousDropdownChoise != null) previousDropdownChoise.classList.remove("form__dropdown-option--selected");
-        previousDropdownChoise = location;
-        locationInput.setAttribute("value", location.innerHTML);
-        location.classList.add("form__dropdown-option--selected");
+        previousDropdownChoise = locationOption;
+        locationInput.value = location;
+        locationOption.classList.add("form__dropdown-option--selected");
         if (locationsDropdown.classList.contains("form__dropdown--active")) locationsDropdown.classList.remove("form__dropdown--active");
         else locationsDropdown.classList.add("form__dropdown--active");
     };
