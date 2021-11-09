@@ -32,7 +32,7 @@
     <main>
         <div class="main__wrap">
             <section class="finder">
-                <form class="form__group" action="{{ url("rooms" }}" method="POST">
+                <form class="form__group" action="{{ url("rooms") }}" method="POST">
                     @csrf
                     @method('get')
                     <div class="form__input-wrapper">
