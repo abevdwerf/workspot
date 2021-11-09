@@ -21,11 +21,11 @@ class Room extends Model
         }
         elseif ($this->floor == 2)
         {
-            return $this->floor + 'nd';
+            return $this->floor . 'nd' . ' '. 'floor';
         }
         elseif ($this->floor == 3)
         {
-            return $this->floor + 'rd';
+            return $this->floor . 'rd' . ' '. 'floor';
         }
         else
         {
