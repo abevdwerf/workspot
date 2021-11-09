@@ -16,16 +16,18 @@ body {
   font-size: 1.5rem;
   background-color: #F9F9F9;
 }
-body.front-page .room__rooms {
+body.front-page .room__rooms, body.front-page .workspace {
   display: none;
+}
+body.front-page .room__rooms .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 @media screen and (min-width: 1024px) {
   body.front-page .room__rooms {
-    display: block;
+    display: flex;
   }
-}
-body.front-page .workspace {
-  display: none;
 }
 @media screen and (min-width: 1024px) {
   body.front-page .workspace {
@@ -54,6 +56,13 @@ main {
 h1, .h1 {
   font-size: 4rem;
   font-weight: 800;
+}
+
+h2, .h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 2.5rem;
 }
 
 h3, .h3 {
@@ -451,6 +460,9 @@ a {
   justify-content: center;
   padding: 2rem 2.5rem 2rem;
   background-color: #ffffff;
+}
+.finder--align-normal {
+  display: block;
 }
 @media screen and (min-height: 810px) {
   .finder {

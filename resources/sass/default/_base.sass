@@ -17,15 +17,19 @@ body
     background-color: $color-grey-backlight
 
     &.front-page
-        .room__rooms
+        .room__rooms, .workspace
             display: none
+
+        .room__rooms
+            .container
+                display: flex
+                flex-direction: column
+                justify-content: center
 
             @media screen and (min-width: $laptop)
-                display: block
+                display: flex
 
         .workspace
-            display: none
-
             @media screen and (min-width: $laptop)
                 display: flex
 
