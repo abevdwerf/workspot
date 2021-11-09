@@ -17,7 +17,7 @@ class CreateRoomsTable extends Migration
             $table->id();
             $table->foreignId('location_id')->constrained();
             $table->string('name');
-            $table->int('floor');
+            $table->integer('floor');
             $table->string('type');
             $table->integer('seats_total');
             $table->integer('seats_available');
