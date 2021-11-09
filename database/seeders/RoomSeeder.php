@@ -17,6 +17,8 @@ class RoomSeeder extends Seeder
     {
         DB::table('rooms')->insert([
             'location_id' => 1,
+            'name' => '0.05',
+            'floor' => 0,
             'type' => 'silent room',
             'seats_total' => 6,
             'seats_available' => 3,
@@ -26,6 +28,8 @@ class RoomSeeder extends Seeder
         ]);
         DB::table('rooms')->insert([
             'location_id' => 1,
+            'name' => '0.18',
+            'floor' => 0,
             'type' => 'meeting room',
             'seats_total' => 4,
             'seats_available' => 4,
@@ -35,6 +39,8 @@ class RoomSeeder extends Seeder
         ]);
         DB::table('rooms')->insert([
             'location_id' => 1,
+            'name' => 'OIL0.10',
+            'floor' => 0,
             'type' => 'OIL',
             'seats_total' => 6,
             'seats_available' => 3,
@@ -44,6 +50,8 @@ class RoomSeeder extends Seeder
         ]);
         DB::table('rooms')->insert([
             'location_id' => 1,
+            'name' => '0.19',
+            'floor' => 0,
             'type' => 'silent room',
             'seats_total' => 4,
             'seats_available' => 0,

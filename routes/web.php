@@ -20,11 +20,7 @@
         return view('app');
     });
 
-    Route::get('rooms', function () {
-        return view('rooms');
-    });
+    Route::get('rooms', [App\Http\Controllers\RoomsController::class, 'findRooms']);
 
-    Route::get('workspace', function () {
-        return view('workspace');
-    });
+    Route::get('workspace/{id}', [App\Http\Controllers\RoomsController::class, 'findRoom']);
 ?>

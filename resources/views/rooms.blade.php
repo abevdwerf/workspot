@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workspot | Find your spot</title>
-    
+
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
 
@@ -35,8 +35,8 @@
                 <a href="./" class="breadcrumb__back-btn flex">
                     <svg xmlns="http://www.w3.org/2000/svg" width="13.503" height="23.619" viewBox="0 0 13.503 23.619">
                         <path id="Icon_ionic-ios-arrow-back" data-name="Icon ionic-ios-arrow-back" d="M15.321,18l8.937-8.93a1.688,1.688,0,0,0-2.391-2.384L11.742,16.8a1.685,1.685,0,0,0-.049,2.327L21.86,29.32a1.688,1.688,0,0,0,2.391-2.384Z" transform="translate(-11.251 -6.194)"/>
-                    </svg> 
-                                        
+                    </svg>
+
                     Go back
                 </a>
 
@@ -45,25 +45,25 @@
 
                     <svg xmlns="http://www.w3.org/2000/svg" width="13.503" height="23.619" viewBox="0 0 13.503 23.619">
                         <path id="Icon_ionic-ios-arrow-back" data-name="Icon ionic-ios-arrow-back" d="M15.321,18l8.937-8.93a1.688,1.688,0,0,0-2.391-2.384L11.742,16.8a1.685,1.685,0,0,0-.049,2.327L21.86,29.32a1.688,1.688,0,0,0,2.391-2.384Z" transform="translate(-11.251 -6.194)"/>
-                    </svg> 
+                    </svg>
                 </a>
             </div>
         </div>
 
         <div class="container">
             <div class="room__rooms">
-                @for ($i = 0; $i < 10; $i++)
-                    <a href="{{ url('workspace') }}" class="room">
+                @foreach($rooms as $room)
+                    <a href="{{ url('workspace/'.$room->id )}}" class="room">
                         <div class="room__content flex">
-                            <h3 class="h3">OIL 0.10</h3>
-                            <span class="room__floor">1st floor</span>
+                            <h3 class="h3">{{$room->name}}</h3>
+                            <span class="room__floor">{{$room->getFloorName()}}</span>
                         </div>
-            
+
                         <span class="room__spots flex">
-                            <span class="room__highlight">5 / 100</span> Spots
+                            <span class="room__highlight">{{$room->seats_available}} / {{$room->seats_total}}</span> Spots
                         </span>
                     </a>
-                @endfor
+                @endforeach
             </div>
         </div>
     </main>
