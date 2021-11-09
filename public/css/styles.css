@@ -394,6 +394,7 @@ a {
 .room {
   display: block;
   flex-wrap: wrap;
+  cursor: pointer;
   align-items: center;
   padding: 2rem 3rem 1rem;
   border-radius: 0.5rem;
@@ -401,6 +402,24 @@ a {
   justify-content: space-between;
   border: solid 0.1rem #F0F0F0;
   transition: background-color 0.25s ease-out;
+}
+.room--active {
+  background-color: #A200FF !important;
+}
+.room--active svg {
+  fill: #ffffff !important;
+}
+.room--active span, .room--active .h3 {
+  color: #ffffff !important;
+}
+.room--active .room__label {
+  background-color: #ffffff !important;
+}
+.room--active .room__label svg {
+  fill: #A200FF !important;
+}
+.room--active .room__label span {
+  color: #A200FF !important;
 }
 .room__content, .room__spots {
   margin-bottom: 1rem;
@@ -453,6 +472,18 @@ a {
 .room__label:not(:last-child) {
   margin-right: 1rem;
 }
+.room:hover {
+  background-color: #F0F0F0;
+}
+.room:hover .room__label {
+  background-color: #B1B1B1;
+}
+.room:hover .room__label svg {
+  fill: #ffffff;
+}
+.room:hover .room__label span {
+  color: #ffffff;
+}
 @media screen and (min-width: 375px) {
   .room {
     display: flex;
@@ -461,21 +492,6 @@ a {
 
 .room__rooms .container {
   padding: 0 3rem;
-}
-.room__rooms .room {
-  cursor: pointer;
-}
-.room__rooms .room:hover {
-  background-color: #F0F0F0;
-}
-.room__rooms .room:hover .room__label {
-  background-color: #B1B1B1;
-}
-.room__rooms .room:hover .room__label svg {
-  fill: #ffffff;
-}
-.room__rooms .room:hover .room__label span {
-  color: #ffffff;
 }
 .room__rooms .room:not(:last-child) {
   margin-bottom: 1rem;

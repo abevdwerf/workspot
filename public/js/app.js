@@ -15,7 +15,9 @@ var locationInput = document.getElementById("location-input");
 var numberOfPeopleInput = document.getElementById("location-number-of-people"); // Get specifying options
 
 var roomOptions = document.getElementsByClassName("form__options-item");
-var personAmountOptions = document.getElementsByClassName("form__selection-option");
+var personAmountOptions = document.getElementsByClassName("form__selection-option"); // Other variables
+
+var rooms = document.getElementsByClassName("room");
 locationsDropdown.childNodes.forEach(function (location) {
   location.onclick = function () {
     if (previousDropdownChoise != null) previousDropdownChoise.classList.remove("form__dropdown-option--selected");
@@ -79,8 +81,8 @@ document.getElementById("search-spot-form").onclick = function (event) {
     introSection.classList.add("animation__slide-out");
     setTimeout(function () {
       introSection.style.display = "none";
-      roomsSection.style.display = "block";
-      workspaceSection.style.display = "block";
+      roomsSection.style.display = "flex";
+      workspaceSection.style.display = "flex";
       setTimeout(function () {
         roomsSection.style.zIndex = 1;
         workspaceSection.style.zIndex = 1;
@@ -88,6 +90,22 @@ document.getElementById("search-spot-form").onclick = function (event) {
     }, 1000);
   }
 };
+
+var _loop3 = function _loop3(_i2) {
+  rooms[_i2].onclick = function (event) {
+    for (var _i3 = 0; _i3 < rooms.length; _i3++) {
+      rooms[_i3].className = "room";
+    }
+
+    event.preventDefault();
+
+    rooms[_i2].classList.add("room--active");
+  };
+};
+
+for (var _i2 = 0; _i2 < rooms.length; _i2++) {
+  _loop3(_i2);
+}
 
 /***/ }),
 

@@ -1,6 +1,7 @@
 .room
     display: block
     flex-wrap: wrap
+    cursor: pointer
     align-items: center
     padding: 2rem 3rem 1rem
     border-radius: $border-radius
@@ -8,6 +9,24 @@
     justify-content: space-between
     border: solid .1rem $color-grey-light
     transition: background-color $transition-fast
+
+    &--active
+        background-color: $color-primary !important
+
+        svg
+            fill: $color-white !important
+
+        span, .h3
+            color: $color-white !important
+
+        .room__label
+            background-color: $color-white !important
+
+            svg
+                fill: $color-primary !important
+
+            span
+                color: $color-primary !important
 
     &__content, &__spots
         margin-bottom: 1rem
@@ -58,6 +77,18 @@
         &:not(:last-child)
             margin-right: 1rem
 
+    &:hover
+        background-color: $color-grey-light
+
+        .room__label
+            background-color: $color-grey
+
+            svg
+                fill: $color-white
+
+            span
+                color: $color-white
+
     @media screen and (min-width: $mobile-m)
         display: flex
 
@@ -66,20 +97,6 @@
         padding: 0 3rem
 
     .room
-        cursor: pointer
-        
-        &:hover
-            background-color: $color-grey-light
-
-            .room__label
-                background-color: $color-grey
-
-                svg
-                    fill: $color-white
-
-                span
-                    color: $color-white
-
         &:not(:last-child)
             margin-bottom: 1rem
 

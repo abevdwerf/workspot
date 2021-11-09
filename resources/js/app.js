@@ -10,6 +10,9 @@ let numberOfPeopleInput = document.getElementById("location-number-of-people");
 let roomOptions = document.getElementsByClassName("form__options-item");
 let personAmountOptions = document.getElementsByClassName("form__selection-option");
 
+// Other variables
+let rooms = document.getElementsByClassName("room");
+
 locationsDropdown.childNodes.forEach(location => {
     location.onclick = function () {
         if (previousDropdownChoise != null) previousDropdownChoise.classList.remove("form__dropdown-option--selected");
@@ -67,8 +70,8 @@ document.getElementById("search-spot-form").onclick = function (event) {
         introSection.classList.add("animation__slide-out");
         setTimeout(() => {
             introSection.style.display = "none";
-            roomsSection.style.display = "block";
-            workspaceSection.style.display = "block";
+            roomsSection.style.display = "flex";
+            workspaceSection.style.display = "flex";
             
             setTimeout(() => {
                 roomsSection.style.zIndex = 1;
@@ -77,3 +80,9 @@ document.getElementById("search-spot-form").onclick = function (event) {
         }, 1000);
     }
 }
+
+for (let i = 0; i < rooms.length; i++) rooms[i].onclick = function(event) {
+    for (let i = 0; i < rooms.length; i++) rooms[i].className = "room";
+    event.preventDefault();
+    rooms[i].classList.add("room--active");
+};
