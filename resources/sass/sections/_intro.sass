@@ -2,11 +2,10 @@
     flex: 1
     display: none
     padding: 5rem
+    overflow: hidden
     margin-left: 3rem
     color: $color-white
     text-align: center
-    flex-direction: column
-    justify-content: center
     border-radius: $border-radius-big
     background-image: linear-gradient(to left bottom, $color-primary 35%, $color-primary-dark)
 
@@ -15,14 +14,14 @@
         max-width: 45%
         margin-bottom: 5rem
 
-        @media screen and (min-width: $laptop-m)
+        @media screen and (min-width: 1330px)
             display: block
 
     &__content
         p
             line-height: 2.1
-            font-size: 1.7rem
-            margin-top: 2.25rem
+            font-size: 1.6rem
+            margin-top: 2.5rem
 
     .btn
         padding-left: 6rem

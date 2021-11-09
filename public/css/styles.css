@@ -16,12 +16,20 @@ body {
   font-size: 1.5rem;
   background-color: #F9F9F9;
 }
-body.front-page .room__rooms, body.front-page .workspace {
+body.front-page .room__rooms {
   display: none;
 }
 @media screen and (min-width: 1024px) {
-  body.front-page .room__rooms, body.front-page .workspace {
+  body.front-page .room__rooms {
     display: block;
+  }
+}
+body.front-page .workspace {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  body.front-page .workspace {
+    display: flex;
   }
 }
 
@@ -30,7 +38,7 @@ main {
 }
 @media screen and (min-width: 1024px) {
   main {
-    padding: 3rem 5rem;
+    padding: 5rem;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -39,7 +47,7 @@ main {
     margin: 0 auto;
     max-width: 130rem;
     justify-content: center;
-    height: calc(100vh - 23.4rem);
+    min-height: calc(100vh - 26.7rem);
   }
 }
 
@@ -76,6 +84,7 @@ a {
 
 .btn {
   border: none;
+  cursor: pointer;
   font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
@@ -155,6 +164,51 @@ a {
 .form__input-wrapper input[type=text]:hover::placeholder {
   color: #ffffff;
 }
+.form__dropdown {
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 1;
+  display: none;
+  cursor: pointer;
+  padding: 1.5rem;
+  position: absolute;
+  box-shadow: 0 1rem 0.8rem rgba(43, 43, 43, 0.5);
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+}
+.form__dropdown--active {
+  display: block;
+}
+.form__dropdown--active + .form__input {
+  color: #ffffff;
+  background-color: #B1B1B1;
+}
+.form__dropdown--active + .form__input::-moz-placeholder {
+  color: #ffffff;
+}
+.form__dropdown--active + .form__input:-ms-input-placeholder {
+  color: #ffffff;
+}
+.form__dropdown--active + .form__input::placeholder {
+  color: #ffffff;
+}
+.form__dropdown-option {
+  display: block;
+  font-weight: 500;
+  padding: 1rem 1.75rem;
+  color: #666666;
+  border-radius: 0.5rem;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+}
+.form__dropdown-option--selected {
+  color: #ffffff !important;
+  background-color: #A200FF !important;
+}
+.form__dropdown-option:hover {
+  color: #2B2B2B;
+  background-color: #F0F0F0;
+}
 .form__selection-wrapper {
   display: flex;
   overflow-x: auto;
@@ -184,11 +238,11 @@ a {
   transition: background-color 0.25s ease-out;
 }
 .form__selection-option--active {
-  background-color: #ffffff;
+  background-color: #ffffff !important;
 }
 .form__selection-option--active span {
-  font-weight: bold;
-  color: #A200FF;
+  font-weight: bold !important;
+  color: #A200FF !important;
 }
 .form__selection-option:hover {
   background-color: #B1B1B1;
@@ -197,6 +251,7 @@ a {
   color: #ffffff;
 }
 .form__selection-option span {
+  pointer-events: none;
   transition: color 0.25s ease-out;
 }
 .form__options-wrapper {
@@ -212,6 +267,7 @@ a {
   font-weight: 500;
   font-size: 1.6rem;
   padding: 1rem 2rem;
+  position: relative;
   margin-bottom: 1rem;
   border-radius: 0.5rem;
   background-color: #F0F0F0;
@@ -219,7 +275,7 @@ a {
 }
 .form__options-item--active {
   color: #ffffff;
-  background-color: #2B2B2B;
+  background-color: #2B2B2B !important;
 }
 .form__options-item--active svg {
   fill: #ffffff !important;
@@ -251,6 +307,17 @@ a {
   .form__options-item:not(:last-child) {
     margin-right: 2rem;
   }
+}
+.form__options-checkbox {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  position: absolute;
 }
 .form__submit {
   width: 100%;
@@ -349,7 +416,7 @@ a {
 }
 @media screen and (min-width: 1024px) {
   .header__logo {
-    width: 17.5rem !important;
+    width: 16.5rem !important;
     margin: 2rem 0 !important;
   }
 }
@@ -364,9 +431,9 @@ a {
     width: auto;
     padding-top: 0;
     margin-right: 0;
-    height: 18.25rem;
+    height: 16.75rem;
     display: block !important;
-    margin: 2.5rem 0 -3.35rem auto;
+    margin: 2.5rem 0 -2.55rem auto;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -379,7 +446,9 @@ a {
 }
 
 .finder {
-  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 2rem 2.5rem 2rem;
   background-color: #ffffff;
 }
@@ -393,7 +462,7 @@ a {
   .finder {
     max-width: 45rem;
     padding: 4rem 3.5rem;
-    box-shadow: 0 0 12px #F0F0F0;
+    box-shadow: 0 0.4rem 1.2rem #e7e7e7;
   }
 }
 
@@ -429,11 +498,10 @@ a {
   flex: 1;
   display: none;
   padding: 5rem;
+  overflow: hidden;
   margin-left: 3rem;
   color: #ffffff;
   text-align: center;
-  flex-direction: column;
-  justify-content: center;
   border-radius: 1.5rem;
   background-image: linear-gradient(to left bottom, #A200FF 35%, #330061);
 }
@@ -442,15 +510,15 @@ a {
   max-width: 45%;
   margin-bottom: 5rem;
 }
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1330px) {
   .intro__image {
     display: block;
   }
 }
 .intro__content p {
   line-height: 2.1;
-  font-size: 1.7rem;
-  margin-top: 2.25rem;
+  font-size: 1.6rem;
+  margin-top: 2.5rem;
 }
 .intro .btn {
   padding-left: 6rem;
@@ -476,7 +544,7 @@ a {
     flex: 1;
     margin-top: 0;
     padding: 3rem;
-    box-shadow: 0 0 12px #F0F0F0;
+    box-shadow: 0 0.4rem 1.2rem #e7e7e7;
     border-radius: 0.5rem;
     background-color: #ffffff;
   }

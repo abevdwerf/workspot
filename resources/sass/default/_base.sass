@@ -17,17 +17,23 @@ body
     background-color: $color-grey-backlight
 
     &.front-page
-        .room__rooms, .workspace
+        .room__rooms
             display: none
 
             @media screen and (min-width: $laptop)
                 display: block
 
+        .workspace
+            display: none
+
+            @media screen and (min-width: $laptop)
+                display: flex
+
 main
     padding: 2rem 0
 
     @media screen and (min-width: $laptop)
-        padding: 3rem 5rem
+        padding: 5rem
         
     .main__wrap
         @media screen and (min-width: $laptop)
@@ -35,4 +41,4 @@ main
             margin: 0 auto
             max-width: 130rem
             justify-content: center
-            height: calc(100vh - 23.4rem)
+            min-height: calc(100vh - 26.7rem)
