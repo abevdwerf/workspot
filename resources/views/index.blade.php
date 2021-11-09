@@ -32,7 +32,7 @@
     <main>
         <div class="main__wrap">
             <section class="finder">
-                <form class="form__group" action="{{ url("app") }}" method="POST">
+                <form id="search-spot-form" class="form__group" action="{{ url("rooms") }}" method="POST">
                     @csrf
                     @method('get')
                     <div class="form__input-wrapper" style="position: relative;">
@@ -101,7 +101,7 @@
                 </form>
             </section>
 
-            <section class="intro flex">
+            <section class="intro animation__slide-in flex">
                 <div class="flex" style="flex-direction: column; margin: auto 0;">
                     <img class="intro__image"src="./img/detective.svg" alt="Detective looking for a workspace">
 
@@ -119,9 +119,65 @@
                     </div>
                 </div>
             </section>
+
+            <div class="room__rooms animation__slide-in" style="display: none;" >
+                <div class="container">
+                    <h2>Available workspaces:</h2>
+
+                    @for ($i = 0; $i < 7; $i++)
+                        <a href="{{ url('workspace') }}" class="room">
+                            <div class="room__content flex">
+                                <h3 class="h3">OIL 0.10</h3>
+                                <span class="room__floor">1st floor</span>
+                            </div>
+                
+                            <span class="room__spots flex">
+                                <span class="room__highlight">5 / 100</span> Spots
+                            </span>
+
+                            @if ($i === 1)
+                                <div class="room__labels flex">
+                                    <div class="room__label flex">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14.183" height="17" viewBox="0 0 14.183 17"><g transform="translate(0 0)"><path d="M91.126,8.189a3.962,3.962,0,0,0,2.9-1.2,3.962,3.962,0,0,0,1.2-2.9,3.962,3.962,0,0,0-1.2-2.9,4.094,4.094,0,0,0-5.79,0,3.962,3.962,0,0,0-1.2,2.895,3.962,3.962,0,0,0,1.2,2.9A3.963,3.963,0,0,0,91.126,8.189Zm0,0" transform="translate(-84.142)" /><path d="M14.149,252.177a10.114,10.114,0,0,0-.138-1.074,8.464,8.464,0,0,0-.264-1.08,5.335,5.335,0,0,0-.444-1.007,3.8,3.8,0,0,0-.67-.872,2.952,2.952,0,0,0-.962-.6,3.324,3.324,0,0,0-1.228-.222,1.246,1.246,0,0,0-.665.282c-.2.13-.433.281-.693.447a3.971,3.971,0,0,1-.9.4,3.483,3.483,0,0,1-2.194,0,3.962,3.962,0,0,1-.9-.4c-.258-.165-.491-.315-.694-.447a1.245,1.245,0,0,0-.665-.282,3.319,3.319,0,0,0-1.228.222,2.949,2.949,0,0,0-.962.6,3.8,3.8,0,0,0-.669.872,5.345,5.345,0,0,0-.444,1.007,8.484,8.484,0,0,0-.264,1.08,10.078,10.078,0,0,0-.138,1.075c-.023.325-.034.663-.034,1a2.823,2.823,0,0,0,.838,2.136A3.018,3.018,0,0,0,3,256.1h8.186a3.017,3.017,0,0,0,2.16-.788,2.821,2.821,0,0,0,.839-2.136c0-.343-.012-.68-.034-1Zm0,0" transform="translate(0 -239.104)" /></g></svg>
+                                        <span class="room__label-text">Meeting Room</span>
+                                    </div>
+
+                                    <div class="room__label flex">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 17h-5v-10h5v10zm2-10v10l9 5v-20l-9 5zm15.324 4.993l1.646-1.659-1.324-1.324-1.651 1.67-1.665-1.648-1.316 1.318 1.67 1.657-1.65 1.669 1.318 1.317 1.658-1.672 1.666 1.653 1.324-1.325-1.676-1.656z"/></svg>
+                                        <span class="room__label-text">Silent Room</span>
+                                    </div>
+                                </div>
+                            @endif
+                        </a>
+                    @endfor
+                </div>
+            </div>
+
+            <div class="workspace animation__slide-in flex" style="display: none;" >
+                <img class="workspace__image" src="./img/workspace.png" alt="Floor plan of workspace">
+            </div>
         </div>
     </main>
 
-    <script src="{{asset('js/app.js')}}" type="text/javascript"></script>
+    <!-- <script src="{{asset('js/app.js')}}" type="text/javascript"></script> -->
+
+    <script type="text/javascript">
+        document.getElementById("search-spot-form").onclick = function (event) {
+            if (window.innerWidth >= 1024) {
+                event.preventDefault();
+
+                let introSection = document.getElementsByClassName("intro")[0];
+                let roomsSection = document.getElementsByClassName("room__rooms")[0];
+                let workspaceSection = document.getElementsByClassName("workspace")[0];
+
+                introSection.classList.add("animation__slide-out");
+                setTimeout(() => {
+                    introSection.style.display = "none";
+                    roomsSection.style.display = "block";
+                    workspaceSection.style.display = "block";
+                }, 1000);
+            }
+        }
+    </script>
 </body>
 </html>

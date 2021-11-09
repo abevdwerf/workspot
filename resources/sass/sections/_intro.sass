@@ -1,16 +1,13 @@
 .intro
     flex: 1
-    opacity: 0
-    z-index: -1
     display: none
     padding: 5rem
     overflow: hidden
     margin-left: 3rem
     text-align: center
     color: $color-white
+    transform: translateY(-100vh)
     border-radius: $border-radius-big
-    transition: transform ease-out .5s
-    animation: slideFromRight 1.5s forwards
     background-image: linear-gradient(to left bottom, $color-primary 35%, $color-primary-dark)
 
     &__image
@@ -36,12 +33,3 @@
 
     @media screen and (min-width: $laptop-m)
         margin-left: 5rem
-
-@keyframes slideFromRight
-    0%
-        opacity: 0
-        transform: translateY(-100vh)
-
-    100%
-        opacity: 1
-        transform: translateY(0vh)

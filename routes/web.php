@@ -16,10 +16,6 @@
         return view('index');
     });
 
-    Route::get('app', function () {
-        return view('app');
-    });
-
     Route::get('rooms', [App\Http\Controllers\RoomsController::class, 'findRooms']);
 
     Route::get('workspace/{id}', [App\Http\Controllers\RoomsController::class, 'findRoom']);

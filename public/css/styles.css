@@ -20,6 +20,9 @@ body {
 body.front-page .room__rooms, body.front-page .workspace {
   display: none;
 }
+body.front-page .intro, body.front-page .room__rooms, body.front-page .workspace {
+  z-index: -1;
+}
 body.front-page .room__rooms {
   max-width: 42rem;
 }
@@ -77,6 +80,56 @@ h3, .h3 {
 
 a {
   text-decoration: none;
+}
+
+@-webkit-keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-100vh);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0vh);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-100vh);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0vh);
+  }
+}
+@-webkit-keyframes slideOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0vh);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100vh);
+  }
+}
+@keyframes slideOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0vh);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100vh);
+  }
+}
+.animation__slide-in {
+  -webkit-animation: slideIn 1.5s forwards;
+          animation: slideIn 1.5s forwards;
+}
+.animation__slide-out {
+  -webkit-animation: slideOut 0.75s forwards;
+          animation: slideOut 0.75s forwards;
 }
 
 .flex {
@@ -578,18 +631,14 @@ a {
 
 .intro {
   flex: 1;
-  opacity: 0;
-  z-index: -1;
   display: none;
   padding: 5rem;
   overflow: hidden;
   margin-left: 3rem;
   text-align: center;
   color: #ffffff;
+  transform: translateY(-100vh);
   border-radius: 1.5rem;
-  transition: transform ease-out 0.5s;
-  -webkit-animation: slideFromRight 1.5s forwards;
-          animation: slideFromRight 1.5s forwards;
   background-image: linear-gradient(to left bottom, #A200FF 35%, #330061);
 }
 .intro__image {
@@ -622,27 +671,6 @@ a {
   }
 }
 
-@-webkit-keyframes slideFromRight {
-  0% {
-    opacity: 0;
-    transform: translateY(-100vh);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0vh);
-  }
-}
-
-@keyframes slideFromRight {
-  0% {
-    opacity: 0;
-    transform: translateY(-100vh);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0vh);
-  }
-}
 .workspace {
   margin-top: 3rem;
 }
