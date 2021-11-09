@@ -12,6 +12,8 @@
     |
     */
 
+    Route::get('', [App\Http\Controllers\IndexController::class, 'allLocations']);
+
     Route::get('./', function () {
         return view('index');
     });
