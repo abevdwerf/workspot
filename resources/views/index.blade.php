@@ -163,25 +163,6 @@
         </div>
     </main>
 
-    <!-- <script src="{{asset('js/app.js')}}" type="text/javascript"></script> -->
-
-    <script type="text/javascript">
-        document.getElementById("search-spot-form").onclick = function (event) {
-            if (window.innerWidth >= 1024) {
-                event.preventDefault();
-
-                let introSection = document.getElementsByClassName("intro")[0];
-                let roomsSection = document.getElementsByClassName("room__rooms")[0];
-                let workspaceSection = document.getElementsByClassName("workspace")[0];
-
-                introSection.classList.add("animation__slide-out");
-                setTimeout(() => {
-                    introSection.style.display = "none";
-                    roomsSection.style.display = "block";
-                    workspaceSection.style.display = "block";
-                }, 1000);
-            }
-        }
-    </script>
+    <script src="{{asset('js/app.js')}}" type="text/javascript"></script>
 </body>
 </html>

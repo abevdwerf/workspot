@@ -1,14 +1,3 @@
-const locations = [
-    "Fontys Nexus",
-    "Fontys P1, Tilburg",
-    "Fontys P2, Tilburg",
-    "Fontys P3, Tilburg",
-    "Fontys R3, Eindhoven",
-    "Fontys R5, Eindhoven",
-    "Fontys R6, Eindhoven",
-    "Fontys R10, Eindhoven"
-];
-
 // Dropdown variables
 let previousDropdownChoise = null;
 let locationsDropdown = document.getElementById("locations-dropdown");
@@ -21,17 +10,12 @@ let numberOfPeopleInput = document.getElementById("location-number-of-people");
 let roomOptions = document.getElementsByClassName("form__options-item");
 let personAmountOptions = document.getElementsByClassName("form__selection-option");
 
-locations.forEach(location => {
-    let locationOption = document.createElement("a");
-    locationOption.innerHTML = location;
-    locationOption.className = "form__dropdown-option";
-    locationsDropdown.appendChild(locationOption);
-    
-    locationOption.onclick = function () {
+locationsDropdown.childNodes.forEach(location => {
+    location.onclick = function () {
         if (previousDropdownChoise != null) previousDropdownChoise.classList.remove("form__dropdown-option--selected");
-        previousDropdownChoise = locationOption;
-        locationInput.value = location;
-        locationOption.classList.add("form__dropdown-option--selected");
+        previousDropdownChoise = location;
+        locationInput.setAttribute("value", location.innerHTML);
+        location.classList.add("form__dropdown-option--selected");
         if (locationsDropdown.classList.contains("form__dropdown--active")) locationsDropdown.classList.remove("form__dropdown--active");
         else locationsDropdown.classList.add("form__dropdown--active");
     };
@@ -44,10 +28,13 @@ locationInput.onclick = function () {
 
 locationInput.addEventListener("input", function (event) {
     locationsDropdown.classList.add("form__dropdown--active");
-    locationsDropdown.childNodes.forEach(child => {
+
+    var children = locationsDropdown.children;
+    for (var i = 0; i < children.length; i++) {
+        var child = children[i];
         if (child.innerHTML.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1) child.style.display = "block";
         else child.style.display = "none";
-    });
+    }
 });
 
 // Select a number of persons
@@ -68,3 +55,20 @@ for (let i = 0; i < roomOptions.length; i++) roomOptions[i].onclick = function (
     if (!roomOptions[i].classList.contains("form__options-item--active")) roomOptions[i].classList.add("form__options-item--active");
     else roomOptions[i].classList.remove("form__options-item--active");
 };
+
+document.getElementById("search-spot-form").onclick = function (event) {
+    if (window.innerWidth >= 1024) {
+        event.preventDefault();
+
+        let introSection = document.getElementsByClassName("intro")[0];
+        let roomsSection = document.getElementsByClassName("room__rooms")[0];
+        let workspaceSection = document.getElementsByClassName("workspace")[0];
+
+        introSection.classList.add("animation__slide-out");
+        setTimeout(() => {
+            introSection.style.display = "none";
+            roomsSection.style.display = "block";
+            workspaceSection.style.display = "block";
+        }, 1000);
+    }
+}
