@@ -21,11 +21,9 @@
 <body>
     <header class="header">
         <div class="container">
-            <a class="header__logo" href="./">
+            <a class="header__logo" href="{{ url('') }}">
                 <img src="{{asset('./img/workspot-logo-white.svg')}}" alt="Workspot Logo">
             </a>
-
-            <img class="header__illustration" src="{{asset('./img/working-person-illustration.svg')}}" alt="Illustration of a working person">
         </div>
     </header>
 

@@ -24,8 +24,6 @@
             <a class="header__logo" href="./">
                 <img src="{{asset('./img/workspot-logo-white.svg')}}" alt="Workspot Logo">
             </a>
-
-            <img class="header__illustration" src="{{asset('./img/working-person-illustration.svg')}}" alt="Illustration of a working person">
         </div>
     </header>
 
