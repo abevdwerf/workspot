@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workspot | Find your spot</title>
-    
+
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
 
@@ -32,7 +32,7 @@
     <main>
         <div class="main__wrap">
             <section class="finder">
-                <form class="form__group" action="{{ url("rooms") }}" method="POST">
+                <form class="form__group" action="{{ url("rooms" }}" method="POST">
                     @csrf
                     @method('get')
                     <div class="form__input-wrapper">
@@ -48,7 +48,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="14.183" height="17" viewBox="0 0 14.183 17"><g transform="translate(0 0)"><path d="M91.126,8.189a3.962,3.962,0,0,0,2.9-1.2,3.962,3.962,0,0,0,1.2-2.9,3.962,3.962,0,0,0-1.2-2.9,4.094,4.094,0,0,0-5.79,0,3.962,3.962,0,0,0-1.2,2.895,3.962,3.962,0,0,0,1.2,2.9A3.963,3.963,0,0,0,91.126,8.189Zm0,0" transform="translate(-84.142)" fill="#b1b1b1"/><path d="M14.149,252.177a10.114,10.114,0,0,0-.138-1.074,8.464,8.464,0,0,0-.264-1.08,5.335,5.335,0,0,0-.444-1.007,3.8,3.8,0,0,0-.67-.872,2.952,2.952,0,0,0-.962-.6,3.324,3.324,0,0,0-1.228-.222,1.246,1.246,0,0,0-.665.282c-.2.13-.433.281-.693.447a3.971,3.971,0,0,1-.9.4,3.483,3.483,0,0,1-2.194,0,3.962,3.962,0,0,1-.9-.4c-.258-.165-.491-.315-.694-.447a1.245,1.245,0,0,0-.665-.282,3.319,3.319,0,0,0-1.228.222,2.949,2.949,0,0,0-.962.6,3.8,3.8,0,0,0-.669.872,5.345,5.345,0,0,0-.444,1.007,8.484,8.484,0,0,0-.264,1.08,10.078,10.078,0,0,0-.138,1.075c-.023.325-.034.663-.034,1a2.823,2.823,0,0,0,.838,2.136A3.018,3.018,0,0,0,3,256.1h8.186a3.017,3.017,0,0,0,2.16-.788,2.821,2.821,0,0,0,.839-2.136c0-.343-.012-.68-.034-1Zm0,0" transform="translate(0 -239.104)" fill="#b1b1b1"/></g></svg>
                             Number of people
                         </label>
-                        
+
                         <div class="form__selection-wrapper">
                             <div class="form__selection-option"><span class="form__selection-text">1</span></div>
                             <div class="form__selection-option"><span class="form__selection-text">2</span></div>
@@ -122,13 +122,26 @@
 
             <div class="room__rooms">
                 <div class="container">
+{{--                    @foreach($rooms as $room)--}}
+{{--                        <a href="{{ url('workspace/'.$room->id )}}" class="room">--}}
+{{--                            <div class="room__content flex">--}}
+{{--                                <h3 class="h3">{{$room->name}}</h3>--}}
+{{--                                <span class="room__floor">1st floor</span>--}}
+{{--                            </div>--}}
+
+{{--                            <span class="room__spots flex">--}}
+{{--                            <span class="room__highlight">{{$room->seats_available}} / {{$room->seats_total}}</span> Spots--}}
+
+{{--                        </a>--}}
+{{--                    @endforeach--}}
+
                     @for ($i = 0; $i < 8; $i++)
-                        <a href="{{ url('workspace') }}" class="room">
+                        <a href="#" class="room">
                             <div class="room__content flex">
                                 <h3 class="h3">OIL 0.10</h3>
                                 <span class="room__floor">1st floor</span>
                             </div>
-                
+
                             <span class="room__spots flex">
                                 <span class="room__highlight">5 / 100</span> Spots
                             </span>

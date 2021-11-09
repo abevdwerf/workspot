@@ -1,5 +1,6 @@
 <?php
     use Illuminate\Support\Facades\Route;
+    use Jenssegers\Agent\Agent;
 
     /*
     |--------------------------------------------------------------------------
@@ -12,15 +13,27 @@
     |
     */
 
+    $agent = new Agent();
+
     Route::get('', function () {
         return view('index');
     });
 
-    Route::get('app', function () {
-        return view('app');
-    });
+    if ($agent->isDesktop())
+    {
+        Route::get('app', function () {
+            return view('app');
+        });
+    }
+    else
+    {
+        Route::get('app', function () {
+            return redirect()->route('rooms');
+        });
+    }
 
-    Route::get('rooms', [App\Http\Controllers\RoomsController::class, 'findRooms']);
+
+    Route::get('rooms', [App\Http\Controllers\RoomsController::class, 'findRooms'])->name('rooms');
 
     Route::get('workspace/{id}', [App\Http\Controllers\RoomsController::class, 'findRoom']);
 ?>
