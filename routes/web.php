@@ -15,9 +15,7 @@
 
     $agent = new Agent();
 
-    Route::get('', function () {
-        return view('index');
-    });
+    Route::get('', [App\Http\Controllers\IndexController::class, 'allLocations']);
 
     if ($agent->isDesktop())
     {
@@ -31,7 +29,6 @@
             return redirect()->route('rooms');
         });
     }
-
 
     Route::get('rooms', [App\Http\Controllers\RoomsController::class, 'findRooms'])->name('rooms');
 
