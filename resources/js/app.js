@@ -69,7 +69,6 @@ document.getElementById("search-spot-form").onclick = function (event) {
 
         let introSection = document.getElementsByClassName("intro")[0];
         let roomsSection = document.getElementsByClassName("room__rooms")[0];
-        let workspaceSection = document.getElementsByClassName("workspace")[0];
 
         axios({
             method: 'get',
@@ -109,11 +108,9 @@ document.getElementById("search-spot-form").onclick = function (event) {
         setTimeout(() => {
             introSection.style.display = "none";
             roomsSection.style.display = "flex";
-            workspaceSection.style.display = "flex";
-            
+
             setTimeout(() => {
                 roomsSection.style.zIndex = 1;
-                workspaceSection.style.zIndex = 1;
             }, 1250);
         }, 1000);
     }
@@ -123,4 +120,14 @@ function toggleRoom (room) {
     for (let i = 0; i < room.parentElement.children.length; i++) if ( room.parentElement.children[i].classList.contains("room")) room.parentElement.children[i].className = "room";
     if (room.classList.contains("room--active")) room.classList.remove("room--active");
     else room.classList.add("room--active");
+
+    let workspaceSection = document.getElementsByClassName("workspace")[0];
+    setTimeout(() => {
+        workspaceSection.style.display = "flex";
+        
+        setTimeout(() => {
+            roomsSection.style.zIndex = 1;
+            
+        }, 1250);
+    }, 1000);
 }

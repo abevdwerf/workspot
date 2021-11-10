@@ -2132,8 +2132,7 @@ document.getElementById("search-spot-form").onclick = function (event) {
   if (window.innerWidth >= 1024) {
     event.preventDefault();
     var introSection = document.getElementsByClassName("intro")[0];
-    var roomsSection = document.getElementsByClassName("room__rooms")[0];
-    var workspaceSection = document.getElementsByClassName("workspace")[0];
+    var _roomsSection = document.getElementsByClassName("room__rooms")[0];
     axios({
       method: 'get',
       url: document.getElementsByClassName("base")[0].innerHTML + "/getrooms",
@@ -2173,11 +2172,9 @@ document.getElementById("search-spot-form").onclick = function (event) {
     introSection.classList.add("animation__slide-out");
     setTimeout(function () {
       introSection.style.display = "none";
-      roomsSection.style.display = "flex";
-      workspaceSection.style.display = "flex";
+      _roomsSection.style.display = "flex";
       setTimeout(function () {
-        roomsSection.style.zIndex = 1;
-        workspaceSection.style.zIndex = 1;
+        _roomsSection.style.zIndex = 1;
       }, 1250);
     }, 1000);
   }
@@ -2189,6 +2186,13 @@ function toggleRoom(room) {
   }
 
   if (room.classList.contains("room--active")) room.classList.remove("room--active");else room.classList.add("room--active");
+  var workspaceSection = document.getElementsByClassName("workspace")[0];
+  setTimeout(function () {
+    workspaceSection.style.display = "flex";
+    setTimeout(function () {
+      roomsSection.style.zIndex = 1;
+    }, 1250);
+  }, 1000);
 }
 
 /***/ }),
