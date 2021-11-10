@@ -17,7 +17,7 @@ locationsDropdown.childNodes.forEach(location => {
     location.onclick = function () {
         if (previousDropdownChoise != null) previousDropdownChoise.classList.remove("form__dropdown-option--selected");
         previousDropdownChoise = location;
-        locationInput.setAttribute("value", location.innerHTML);
+        locationInput.value = location.innerHTML;
         location.classList.add("form__dropdown-option--selected");
         if (locationsDropdown.classList.contains("form__dropdown--active")) locationsDropdown.classList.remove("form__dropdown--active");
         else locationsDropdown.classList.add("form__dropdown--active");
