@@ -67,52 +67,67 @@ document.getElementById("search-spot-form").onclick = function (event) {
     if (window.innerWidth >= 1024) {
         event.preventDefault();
 
-        let introSection = document.getElementsByClassName("intro")[0];
-        let roomsSection = document.getElementsByClassName("room__rooms")[0];
+        if (document.getElementById("location-id-input").value != "") {
+            if (numberOfPeopleInput.value != null && numberOfPeopleInput.value > 0) {
+                locationInput.classList.remove("form__input--error");
+                locationInput.parentElement.getElementsByTagName("label")[0].style.color = "";
+                locationInput.parentElement.getElementsByTagName("label")[0].getElementsByTagName("svg")[0].style.fill = "#B1B1B1";
 
-        axios({
-            method: 'get',
-            url: document.getElementsByClassName("base")[0].innerHTML + "/getrooms",
-            params: {
-                location: document.getElementById("location-id-input").value,
-                numberOfPeople: numberOfPeopleInput.value
+                axios({
+                    method: 'get',
+                    url: document.getElementsByClassName("base")[0].innerHTML + "/getrooms",
+                    params: {
+                        location: document.getElementById("location-id-input").value,
+                        numberOfPeople: numberOfPeopleInput.value
+                    }
+                })
+                .then(function (rooms) {
+                    console.log(rooms.data);
+                    for (let i = 0; i < roomTemplate.parentElement.children.length; i++) {
+                        if (roomTemplate.parentElement.children[i].classList.contains("room") && !roomTemplate.parentElement.children[i].classList.contains("room--error")) roomTemplate.parentElement.children[i].style.display = "none";
+                    }
+        
+                    const roomAmount = rooms.data.length
+        
+                    if (roomAmount == 0) document.getElementsByClassName("room--error")[0].style.display = "flex";
+                    else document.getElementsByClassName("room--error")[0].style.display = "none";
+        
+                    for (let index = 0; index < roomAmount; index++) {
+                        let room = roomTemplate.cloneNode(true);
+                        room.style.display = "flex";
+                        room.className = "room";
+                        roomTemplate.parentElement.appendChild(room);
+        
+                        room.getElementsByClassName("h3")[0].innerHTML = rooms.data[index].name;
+                        room.getElementsByClassName("room__floor")[0].innerHTML = (rooms.data[index].floor == 0 ? "Ground" : rooms.data[index].floor)  + " Floor";
+                        room.getElementsByClassName("room__highlight")[0].innerHTML = rooms.data[index].seats_available + "/" + rooms.data[index].seats_total ;
+                        room.getElementsByClassName("room__spots-inner")[0].innerHTML = "Spots";
+        
+                        room.onclick = function () { toggleRoom(room); };
+                    }
+                });
+
+                let introSection = document.getElementsByClassName("intro")[0];
+                let roomsSection = document.getElementsByClassName("room__rooms")[0];
+
+                introSection.classList.add("animation__slide-out");
+                setTimeout(() => {
+                    introSection.style.display = "none";
+                    roomsSection.style.display = "flex";
+
+                    setTimeout(() => {
+                        roomsSection.style.zIndex = 1;
+                    }, 1250);
+                }, 1000);
+            } else {
+                numberOfPeopleInput.parentElement.getElementsByTagName("label")[0].style.color = "red";
+                numberOfPeopleInput.parentElement.getElementsByTagName("label")[0].getElementsByTagName("svg")[0].style.fill = "red";
             }
-        })
-        .then(function (rooms) {
-            console.log(rooms.data);
-            for (let i = 0; i < roomTemplate.parentElement.children.length; i++) {
-                if (roomTemplate.parentElement.children[i].classList.contains("room") && !roomTemplate.parentElement.children[i].classList.contains("room--error")) roomTemplate.parentElement.children[i].style.display = "none";
-            }
-
-            const roomAmount = rooms.data.length
-
-            if (roomAmount == 0) document.getElementsByClassName("room--error")[0].style.display = "flex";
-            else document.getElementsByClassName("room--error")[0].style.display = "none";
-
-            for (let index = 0; index < roomAmount; index++) {
-                let room = roomTemplate.cloneNode(true);
-                room.style.display = "flex";
-                room.className = "room";
-                roomTemplate.parentElement.appendChild(room);
-
-                room.getElementsByClassName("h3")[0].innerHTML = rooms.data[index].name;
-                room.getElementsByClassName("room__floor")[0].innerHTML = (rooms.data[index].floor == 0 ? "Ground" : rooms.data[index].floor)  + " Floor";
-                room.getElementsByClassName("room__highlight")[0].innerHTML = rooms.data[index].seats_available + "/" + rooms.data[index].seats_total ;
-                room.getElementsByClassName("room__spots-inner")[0].innerHTML = "Spots";
-
-                room.onclick = function () { toggleRoom(room); };
-            }
-        });
-
-        introSection.classList.add("animation__slide-out");
-        setTimeout(() => {
-            introSection.style.display = "none";
-            roomsSection.style.display = "flex";
-
-            setTimeout(() => {
-                roomsSection.style.zIndex = 1;
-            }, 1250);
-        }, 1000);
+        } else {
+            locationInput.classList.add("form__input--error");
+            locationInput.parentElement.getElementsByTagName("label")[0].style.color = "red";
+            locationInput.parentElement.getElementsByTagName("label")[0].getElementsByTagName("svg")[0].style.fill = "red";
+        }
     }
 }
 

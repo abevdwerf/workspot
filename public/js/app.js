@@ -2131,52 +2131,67 @@ for (var _i = 0; _i < roomOptions.length; _i++) {
 document.getElementById("search-spot-form").onclick = function (event) {
   if (window.innerWidth >= 1024) {
     event.preventDefault();
-    var introSection = document.getElementsByClassName("intro")[0];
-    var _roomsSection = document.getElementsByClassName("room__rooms")[0];
-    axios({
-      method: 'get',
-      url: document.getElementsByClassName("base")[0].innerHTML + "/getrooms",
-      params: {
-        location: document.getElementById("location-id-input").value,
-        numberOfPeople: numberOfPeopleInput.value
+
+    if (document.getElementById("location-id-input").value != "") {
+      if (numberOfPeopleInput.value != null && numberOfPeopleInput.value > 0) {
+        locationInput.classList.remove("form__input--error");
+        locationInput.parentElement.getElementsByTagName("label")[0].style.color = "";
+        locationInput.parentElement.getElementsByTagName("label")[0].getElementsByTagName("svg")[0].style.fill = "#B1B1B1";
+        axios({
+          method: 'get',
+          url: document.getElementsByClassName("base")[0].innerHTML + "/getrooms",
+          params: {
+            location: document.getElementById("location-id-input").value,
+            numberOfPeople: numberOfPeopleInput.value
+          }
+        }).then(function (rooms) {
+          console.log(rooms.data);
+
+          for (var _i2 = 0; _i2 < roomTemplate.parentElement.children.length; _i2++) {
+            if (roomTemplate.parentElement.children[_i2].classList.contains("room") && !roomTemplate.parentElement.children[_i2].classList.contains("room--error")) roomTemplate.parentElement.children[_i2].style.display = "none";
+          }
+
+          var roomAmount = rooms.data.length;
+          if (roomAmount == 0) document.getElementsByClassName("room--error")[0].style.display = "flex";else document.getElementsByClassName("room--error")[0].style.display = "none";
+
+          var _loop3 = function _loop3(index) {
+            var room = roomTemplate.cloneNode(true);
+            room.style.display = "flex";
+            room.className = "room";
+            roomTemplate.parentElement.appendChild(room);
+            room.getElementsByClassName("h3")[0].innerHTML = rooms.data[index].name;
+            room.getElementsByClassName("room__floor")[0].innerHTML = (rooms.data[index].floor == 0 ? "Ground" : rooms.data[index].floor) + " Floor";
+            room.getElementsByClassName("room__highlight")[0].innerHTML = rooms.data[index].seats_available + "/" + rooms.data[index].seats_total;
+            room.getElementsByClassName("room__spots-inner")[0].innerHTML = "Spots";
+
+            room.onclick = function () {
+              toggleRoom(room);
+            };
+          };
+
+          for (var index = 0; index < roomAmount; index++) {
+            _loop3(index);
+          }
+        });
+        var introSection = document.getElementsByClassName("intro")[0];
+        var _roomsSection = document.getElementsByClassName("room__rooms")[0];
+        introSection.classList.add("animation__slide-out");
+        setTimeout(function () {
+          introSection.style.display = "none";
+          _roomsSection.style.display = "flex";
+          setTimeout(function () {
+            _roomsSection.style.zIndex = 1;
+          }, 1250);
+        }, 1000);
+      } else {
+        numberOfPeopleInput.parentElement.getElementsByTagName("label")[0].style.color = "red";
+        numberOfPeopleInput.parentElement.getElementsByTagName("label")[0].getElementsByTagName("svg")[0].style.fill = "red";
       }
-    }).then(function (rooms) {
-      console.log(rooms.data);
-
-      for (var _i2 = 0; _i2 < roomTemplate.parentElement.children.length; _i2++) {
-        if (roomTemplate.parentElement.children[_i2].classList.contains("room") && !roomTemplate.parentElement.children[_i2].classList.contains("room--error")) roomTemplate.parentElement.children[_i2].style.display = "none";
-      }
-
-      var roomAmount = rooms.data.length;
-      if (roomAmount == 0) document.getElementsByClassName("room--error")[0].style.display = "flex";else document.getElementsByClassName("room--error")[0].style.display = "none";
-
-      var _loop3 = function _loop3(index) {
-        var room = roomTemplate.cloneNode(true);
-        room.style.display = "flex";
-        room.className = "room";
-        roomTemplate.parentElement.appendChild(room);
-        room.getElementsByClassName("h3")[0].innerHTML = rooms.data[index].name;
-        room.getElementsByClassName("room__floor")[0].innerHTML = (rooms.data[index].floor == 0 ? "Ground" : rooms.data[index].floor) + " Floor";
-        room.getElementsByClassName("room__highlight")[0].innerHTML = rooms.data[index].seats_available + "/" + rooms.data[index].seats_total;
-        room.getElementsByClassName("room__spots-inner")[0].innerHTML = "Spots";
-
-        room.onclick = function () {
-          toggleRoom(room);
-        };
-      };
-
-      for (var index = 0; index < roomAmount; index++) {
-        _loop3(index);
-      }
-    });
-    introSection.classList.add("animation__slide-out");
-    setTimeout(function () {
-      introSection.style.display = "none";
-      _roomsSection.style.display = "flex";
-      setTimeout(function () {
-        _roomsSection.style.zIndex = 1;
-      }, 1250);
-    }, 1000);
+    } else {
+      locationInput.classList.add("form__input--error");
+      locationInput.parentElement.getElementsByTagName("label")[0].style.color = "red";
+      locationInput.parentElement.getElementsByTagName("label")[0].getElementsByTagName("svg")[0].style.fill = "red";
+    }
   }
 };
 

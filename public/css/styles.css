@@ -192,6 +192,19 @@ a {
   border-radius: 0.5rem;
   background-color: #F0F0F0;
 }
+.form__input--error {
+  color: #ffffff;
+  background-color: #ff5555;
+}
+.form__input--error::-moz-placeholder {
+  color: #ffffff;
+}
+.form__input--error:-ms-input-placeholder {
+  color: #ffffff;
+}
+.form__input--error::placeholder {
+  color: #ffffff;
+}
 .form__input:focus {
   outline: none;
 }
