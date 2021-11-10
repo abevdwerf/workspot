@@ -82,10 +82,15 @@ document.getElementById("search-spot-form").onclick = function (event) {
         .then(function (rooms) {
             console.log(rooms.data);
             for (let i = 0; i < roomTemplate.parentElement.children.length; i++) {
-                if (roomTemplate.parentElement.children[i].classList.contains("room")) roomTemplate.parentElement.children[i].style.display = "none";
+                if (roomTemplate.parentElement.children[i].classList.contains("room") && !roomTemplate.parentElement.children[i].classList.contains("room--error")) roomTemplate.parentElement.children[i].style.display = "none";
             }
 
-            for (let index = 0; index < rooms.data.length; index++) {
+            const roomAmount = rooms.data.length
+
+            if (roomAmount == 0) document.getElementsByClassName("room--error")[0].style.display = "flex";
+            else document.getElementsByClassName("room--error")[0].style.display = "none";
+
+            for (let index = 0; index < roomAmount; index++) {
                 let room = roomTemplate.cloneNode(true);
                 room.style.display = "flex";
                 room.className = "room";

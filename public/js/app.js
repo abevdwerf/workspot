@@ -2145,8 +2145,11 @@ document.getElementById("search-spot-form").onclick = function (event) {
       console.log(rooms.data);
 
       for (var _i2 = 0; _i2 < roomTemplate.parentElement.children.length; _i2++) {
-        if (roomTemplate.parentElement.children[_i2].classList.contains("room")) roomTemplate.parentElement.children[_i2].style.display = "none";
+        if (roomTemplate.parentElement.children[_i2].classList.contains("room") && !roomTemplate.parentElement.children[_i2].classList.contains("room--error")) roomTemplate.parentElement.children[_i2].style.display = "none";
       }
+
+      var roomAmount = rooms.data.length;
+      if (roomAmount == 0) document.getElementsByClassName("room--error")[0].style.display = "flex";else document.getElementsByClassName("room--error")[0].style.display = "none";
 
       var _loop3 = function _loop3(index) {
         var room = roomTemplate.cloneNode(true);
@@ -2163,7 +2166,7 @@ document.getElementById("search-spot-form").onclick = function (event) {
         };
       };
 
-      for (var index = 0; index < rooms.data.length; index++) {
+      for (var index = 0; index < roomAmount; index++) {
         _loop3(index);
       }
     });

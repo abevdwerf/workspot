@@ -421,7 +421,17 @@ a {
 .room--active .room__label span {
   color: #A200FF !important;
 }
-.room__content, .room__spots {
+.room--error {
+  background-color: #ff5555 !important;
+}
+.room--error svg {
+  fill: #ffffff !important;
+}
+.room--error p {
+  font-weight: 500;
+  color: #ffffff !important;
+}
+.room__content, .room__spots, .room p {
   margin-bottom: 1rem;
 }
 .room__floor {

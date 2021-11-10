@@ -28,7 +28,17 @@
             span
                 color: $color-primary !important
 
-    &__content, &__spots
+    &--error
+        background-color: #ff5555 !important
+
+        svg
+            fill: $color-white !important
+
+        p
+            font-weight: 500
+            color: $color-white !important
+
+    &__content, &__spots, p
         margin-bottom: 1rem
 
     &__floor

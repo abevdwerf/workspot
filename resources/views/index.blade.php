@@ -153,6 +153,10 @@
                             </div>
                         </div>
                     </a>
+
+                    <a href="#" class="room room--error">
+                        <p>No available rooms found.</p>
+                    </a>
                 </div>
             </div>
 
