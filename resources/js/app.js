@@ -1,3 +1,5 @@
+window.axios = require('axios');
+
 // Dropdown variables
 let previousDropdownChoise = null;
 let locationsDropdown = document.getElementById("locations-dropdown");
@@ -12,11 +14,13 @@ let personAmountOptions = document.getElementsByClassName("form__selection-optio
 
 // Other variables
 let rooms = document.getElementsByClassName("room");
+const roomTemplate = document.getElementById("room-template");
 
 locationsDropdown.childNodes.forEach(location => {
     location.onclick = function () {
         if (previousDropdownChoise != null) previousDropdownChoise.classList.remove("form__dropdown-option--selected");
         previousDropdownChoise = location;
+        document.getElementById("location-id-input").value = location.dataset.id;
         locationInput.value = location.innerHTML;
         location.classList.add("form__dropdown-option--selected");
         if (locationsDropdown.classList.contains("form__dropdown--active")) locationsDropdown.classList.remove("form__dropdown--active");
@@ -67,6 +71,35 @@ document.getElementById("search-spot-form").onclick = function (event) {
         let roomsSection = document.getElementsByClassName("room__rooms")[0];
         let workspaceSection = document.getElementsByClassName("workspace")[0];
 
+        axios({
+            method: 'get',
+            url: 'http://localhost/school-projects/workspot/public/getrooms',
+            params: {
+                location: document.getElementById("location-id-input").value,
+                numberOfPeople: numberOfPeopleInput.value
+            }
+        })
+        .then(function (rooms) {
+            console.log(rooms.data);
+            for (let i = 0; i < roomTemplate.parentElement.children.length; i++) {
+                if (roomTemplate.parentElement.children[i].classList.contains("room")) roomTemplate.parentElement.children[i].style.display = "none";
+            }
+
+            for (let index = 0; index < rooms.data.length; index++) {
+                let room = roomTemplate.cloneNode(true);
+                room.style.display = "flex";
+                room.className = "room";
+                roomTemplate.parentElement.appendChild(room);
+
+                room.getElementsByClassName("h3")[0].innerHTML = rooms.data[index].name;
+                room.getElementsByClassName("room__floor")[0].innerHTML = (rooms.data[index].floor == 0 ? "Ground" : rooms.data[index].floor)  + " Floor";
+                room.getElementsByClassName("room__highlight")[0].innerHTML = rooms.data[index].seats_available + "/" + rooms.data[index].seats_total ;
+                room.getElementsByClassName("room__spots-inner")[0].innerHTML = "Spots";
+
+                room.onclick = function () { toggleRoom(room); };
+            }
+        });
+
         introSection.classList.add("animation__slide-out");
         setTimeout(() => {
             introSection.style.display = "none";
@@ -81,8 +114,8 @@ document.getElementById("search-spot-form").onclick = function (event) {
     }
 }
 
-for (let i = 0; i < rooms.length; i++) rooms[i].onclick = function(event) {
-    for (let i = 0; i < rooms.length; i++) rooms[i].className = "room";
-    event.preventDefault();
-    rooms[i].classList.add("room--active");
-};
+function toggleRoom (room) {
+    for (let i = 0; i < room.parentElement.children.length; i++) if ( room.parentElement.children[i].classList.contains("room")) room.parentElement.children[i].className = "room";
+    if (room.classList.contains("room--active")) room.classList.remove("room--active");
+    else room.classList.add("room--active");
+}

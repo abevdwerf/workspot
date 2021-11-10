@@ -17,4 +17,7 @@
     Route::get('rooms', [App\Http\Controllers\RoomsController::class, 'findRooms']);
 
     Route::get('workspace/{id}', [App\Http\Controllers\RoomsController::class, 'findRoom']);
+
+    // For ajax request with Javascript
+    Route::get('getrooms', [App\Http\Controllers\RoomsSpecifier::class, 'specifyRooms']);
 ?>
