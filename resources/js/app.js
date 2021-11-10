@@ -59,8 +59,8 @@ for (let i = 0; i < personAmountOptions.length; i++) personAmountOptions[i].oncl
 
 // Toggle an room option
 for (let i = 0; i < roomOptions.length; i++) roomOptions[i].onclick = function () {
-    if (!roomOptions[i].classList.contains("form__options-item--active")) roomOptions[i].classList.add("form__options-item--active");
-    else roomOptions[i].classList.remove("form__options-item--active");
+    if (roomOptions[i].classList.contains("form__options-item--active")) roomOptions[i].classList.remove("form__options-item--active");
+    else roomOptions[i].classList.add("form__options-item--active");
 };
 
 document.getElementById("search-spot-form").onclick = function (event) {
@@ -86,23 +86,23 @@ document.getElementById("search-spot-form").onclick = function (event) {
                     for (let i = 0; i < roomTemplate.parentElement.children.length; i++) {
                         if (roomTemplate.parentElement.children[i].classList.contains("room") && !roomTemplate.parentElement.children[i].classList.contains("room--error")) roomTemplate.parentElement.children[i].style.display = "none";
                     }
-        
+
                     const roomAmount = rooms.data.length
-        
+
                     if (roomAmount == 0) document.getElementsByClassName("room--error")[0].style.display = "flex";
                     else document.getElementsByClassName("room--error")[0].style.display = "none";
-        
+
                     for (let index = 0; index < roomAmount; index++) {
                         let room = roomTemplate.cloneNode(true);
                         room.style.display = "flex";
                         room.className = "room";
                         roomTemplate.parentElement.appendChild(room);
-        
+
                         room.getElementsByClassName("h3")[0].innerHTML = rooms.data[index].name;
                         room.getElementsByClassName("room__floor")[0].innerHTML = (rooms.data[index].floor == 0 ? "Ground" : rooms.data[index].floor)  + " Floor";
                         room.getElementsByClassName("room__highlight")[0].innerHTML = rooms.data[index].seats_available + "/" + rooms.data[index].seats_total ;
                         room.getElementsByClassName("room__spots-inner")[0].innerHTML = "Spots";
-        
+
                         room.onclick = function () { toggleRoom(room); };
                     }
                 });
@@ -139,10 +139,10 @@ function toggleRoom (room) {
     let workspaceSection = document.getElementsByClassName("workspace")[0];
     setTimeout(() => {
         workspaceSection.style.display = "flex";
-        
+
         setTimeout(() => {
             roomsSection.style.zIndex = 1;
-            
+
         }, 1250);
     }, 1000);
 }
