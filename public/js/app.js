@@ -2174,15 +2174,15 @@ document.getElementById("search-spot-form").onclick = function (event) {
           }
         });
         var introSection = document.getElementsByClassName("intro")[0];
-        var _roomsSection = document.getElementsByClassName("room__rooms")[0];
+        var roomsSection = document.getElementsByClassName("room__rooms")[0];
         introSection.classList.add("animation__slide-out");
         setTimeout(function () {
           introSection.style.display = "none";
-          _roomsSection.style.display = "flex";
-          setTimeout(function () {
-            _roomsSection.style.zIndex = 1;
-          }, 1250);
+          roomsSection.style.display = "flex";
         }, 1000);
+        setTimeout(function () {
+          roomsSection.style.zIndex = 1;
+        }, 2250);
       } else {
         numberOfPeopleInput.parentElement.getElementsByTagName("label")[0].style.color = "red";
         numberOfPeopleInput.parentElement.getElementsByTagName("label")[0].getElementsByTagName("svg")[0].style.fill = "red";
@@ -2202,12 +2202,10 @@ function toggleRoom(room) {
 
   if (room.classList.contains("room--active")) room.classList.remove("room--active");else room.classList.add("room--active");
   var workspaceSection = document.getElementsByClassName("workspace")[0];
+  workspaceSection.style.display = "flex";
   setTimeout(function () {
-    workspaceSection.style.display = "flex";
-    setTimeout(function () {
-      roomsSection.style.zIndex = 1;
-    }, 1250);
-  }, 1000);
+    workspaceSection.style.zIndex = 1;
+  }, 1250);
 }
 
 /***/ }),

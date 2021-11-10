@@ -114,11 +114,11 @@ document.getElementById("search-spot-form").onclick = function (event) {
                 setTimeout(() => {
                     introSection.style.display = "none";
                     roomsSection.style.display = "flex";
-
-                    setTimeout(() => {
-                        roomsSection.style.zIndex = 1;
-                    }, 1250);
                 }, 1000);
+
+                setTimeout(() => {
+                    roomsSection.style.zIndex = 1;
+                }, 2250);
             } else {
                 numberOfPeopleInput.parentElement.getElementsByTagName("label")[0].style.color = "red";
                 numberOfPeopleInput.parentElement.getElementsByTagName("label")[0].getElementsByTagName("svg")[0].style.fill = "red";
@@ -137,12 +137,6 @@ function toggleRoom (room) {
     else room.classList.add("room--active");
 
     let workspaceSection = document.getElementsByClassName("workspace")[0];
-    setTimeout(() => {
-        workspaceSection.style.display = "flex";
-        
-        setTimeout(() => {
-            roomsSection.style.zIndex = 1;
-            
-        }, 1250);
-    }, 1000);
+    workspaceSection.style.display = "flex";
+    setTimeout(() => { workspaceSection.style.zIndex = 1; }, 1250);
 }
