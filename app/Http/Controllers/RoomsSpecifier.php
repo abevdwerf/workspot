@@ -28,9 +28,11 @@ class RoomsSpecifier extends Controller
         $specifiedRooms = array();
 
         foreach ($rooms as $key => $room) {
-            if (in_array($room["type"], $filters)) {
-                if ($room["location_id"] == $locationId) {
-                    array_push($specifiedRooms, $room);
+            if ($room["location_id"] == $locationId) {
+                if (in_array($room["type"], $filters)) {
+                    if ($room["seats_available"] >= $numberOfPeople) {
+                        array_push($specifiedRooms, $room);
+                    }
                 }
             }
         }

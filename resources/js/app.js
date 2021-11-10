@@ -104,7 +104,14 @@ document.getElementById("search-spot-form").onclick = function (event) {
                         room.getElementsByClassName("h3")[0].innerHTML = rooms.data[index].name;
                         room.getElementsByClassName("room__floor")[0].innerHTML = (rooms.data[index].floor == 0 ? "Ground" : rooms.data[index].floor)  + " Floor";
                         room.getElementsByClassName("room__highlight")[0].innerHTML = rooms.data[index].seats_available + "/" + rooms.data[index].seats_total ;
-                        room.getElementsByClassName("room__spots-inner")[0].innerHTML = "Spots";
+                        room.getElementsByClassName("room__spots-inner")[0].innerHTML = "Spots left";
+
+                        if (rooms.data[index].type == "silent room" || rooms.data[index].type == "meeting room") {
+                            room.getElementsByClassName("room__labels")[0].style.display = "flex";
+
+                            if (rooms.data[index].type == "silent room") room.getElementsByClassName("room__label--silent")[0].style.display = "flex";
+                            if (rooms.data[index].type == "meeting room") room.getElementsByClassName("room__label--meeting")[0].style.display = "flex";
+                        }
         
                         room.onclick = function () { toggleRoom(room); };
                     }
