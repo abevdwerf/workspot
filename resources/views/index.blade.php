@@ -29,6 +29,8 @@
         </div>
     </header>
 
+    <span style="display: none;" class="base">{{ url("") }}</span>
+
     <main>
         <div class="main__wrap">
             <section class="finder">

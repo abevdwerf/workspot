@@ -73,7 +73,7 @@ document.getElementById("search-spot-form").onclick = function (event) {
 
         axios({
             method: 'get',
-            url: 'http://localhost/school-projects/workspot/public/getrooms',
+            url: document.getElementsByClassName("base")[0].innerHTML + "/getrooms",
             params: {
                 location: document.getElementById("location-id-input").value,
                 numberOfPeople: numberOfPeopleInput.value
