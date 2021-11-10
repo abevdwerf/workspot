@@ -2142,10 +2142,13 @@ document.getElementById("search-spot-form").onclick = function (event) {
           url: document.getElementsByClassName("base")[0].innerHTML + "/getrooms",
           params: {
             location: document.getElementById("location-id-input").value,
-            numberOfPeople: numberOfPeopleInput.value
+            numberOfPeople: numberOfPeopleInput.value,
+            filterDeskPlace: document.getElementById("form-filter-desk").checked ? "OIL" : "",
+            filterSilentRoom: document.getElementById("form-filter-silent").checked ? "silent room" : "",
+            filterMeetingRoom: document.getElementById("form-filter-meeting").checked ? "meeting room" : ""
           }
         }).then(function (rooms) {
-          console.log(rooms.data);
+          console.log(rooms);
 
           for (var _i2 = 0; _i2 < roomTemplate.parentElement.children.length; _i2++) {
             if (roomTemplate.parentElement.children[_i2].classList.contains("room") && !roomTemplate.parentElement.children[_i2].classList.contains("room--error")) roomTemplate.parentElement.children[_i2].style.display = "none";
