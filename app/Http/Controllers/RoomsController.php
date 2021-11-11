@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Room;
+use App\Models\Location;
 
 class RoomsController extends Controller
 {
@@ -14,10 +15,41 @@ class RoomsController extends Controller
         return view("workspace", ['room' => $room]);
     }
 
-    public function findRooms()
-    {
+    public function findRooms () {
         //TODO hier moeten nog de gekozen filters bij komen.
         $rooms = Room::all();
         return view("rooms", ['rooms' => $rooms]);
+    }
+
+    public function specifyRooms ()
+    {
+        $rooms = Room::all();
+        $locations = Location::all();
+
+        $locationId =  $_GET["location"];
+        $numberOfPeople = $_GET["numberOfPeople"];
+
+        $filterDeskSpace = $_GET["filterDeskPlace"];
+        $filterSilentRoom = $_GET["filterSilentRoom"];
+        $filterMeetingRoom = $_GET["filterMeetingRoom"];
+
+        $filters = [
+            0 => $filterDeskSpace,
+            1 => $filterSilentRoom,
+            2 => $filterMeetingRoom
+        ];
+        $specifiedRooms = array();
+
+        foreach ($rooms as $key => $room) {
+            if ($room["location_id"] == $locationId) {
+                if (in_array($room["type"], $filters)) {
+                    if ($room["seats_available"] >= $numberOfPeople) {
+                        array_push($specifiedRooms, $room);
+                    }
+                }
+            }
+        }
+
+        echo json_encode($specifiedRooms);
     }
 }
