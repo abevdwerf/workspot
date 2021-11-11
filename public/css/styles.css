@@ -25,7 +25,7 @@ body.front-page .intro, body.front-page .room__rooms, body.front-page .workspace
 }
 body.front-page .room__rooms {
   flex: 1;
-  min-width: 41rem;
+  min-width: 43rem;
 }
 body.front-page .room__rooms .container {
   display: flex;
