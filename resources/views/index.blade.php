@@ -78,20 +78,29 @@
                         </label>
 
                         <div class="form__options-wrapper flex">
-                            <a class="form__options-item flex" href="#">
+                            <a class="form__options-item form__options-item--active flex" href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 17h-5v-10h5v10zm2-10v10l9 5v-20l-9 5zm15.324 4.993l1.646-1.659-1.324-1.324-1.651 1.67-1.665-1.648-1.316 1.318 1.67 1.657-1.65 1.669 1.318 1.317 1.658-1.672 1.666 1.653 1.324-1.325-1.676-1.656z"/></svg>
                                 Silent Room
-                                <input id="form-filter-silent" class="form__options-checkbox" type="checkbox">
+                                <input id="form-filter-silent" class="form__options-checkbox" type="checkbox" checked>
+                                <svg class="form__options-active-icon" xmlns="http://www.w3.org/2000/svg" width="21.338" height="15.912" viewBox="0 0 21.338 15.912">
+                                    <path id="Icon_awesome-check" data-name="Icon awesome-check" d="M7.247,20.177.312,13.242a1.067,1.067,0,0,1,0-1.509l1.509-1.509a1.067,1.067,0,0,1,1.509,0L8,14.9,18.008,4.89a1.067,1.067,0,0,1,1.509,0L21.026,6.4a1.067,1.067,0,0,1,0,1.509L8.756,20.177A1.067,1.067,0,0,1,7.247,20.177Z" transform="translate(0 -4.577)"/>
+                                </svg>
                             </a>
-                            <a class="form__options-item flex" href="#">
+                            <a class="form__options-item form__options-item--active flex" href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 2h-20v13h20v-13zm-2 11h-16v-9h16v9zm2 3h-20l-2 6h24l-2-6zm-12.228 5l.466-1h3.524l.466 1h-4.456z"/></svg>
                                 Desks
-                                <input id="form-filter-desk" class="form__options-checkbox" type="checkbox">
+                                <input id="form-filter-desk" class="form__options-checkbox" type="checkbox" checked>
+                                <svg class="form__options-active-icon" xmlns="http://www.w3.org/2000/svg" width="21.338" height="15.912" viewBox="0 0 21.338 15.912">
+                                    <path id="Icon_awesome-check" data-name="Icon awesome-check" d="M7.247,20.177.312,13.242a1.067,1.067,0,0,1,0-1.509l1.509-1.509a1.067,1.067,0,0,1,1.509,0L8,14.9,18.008,4.89a1.067,1.067,0,0,1,1.509,0L21.026,6.4a1.067,1.067,0,0,1,0,1.509L8.756,20.177A1.067,1.067,0,0,1,7.247,20.177Z" transform="translate(0 -4.577)"/>
+                                </svg>
                             </a>
-                            <a class="form__options-item flex" href="#">
+                            <a class="form__options-item form__options-item--active flex" href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14.183" height="17" viewBox="0 0 14.183 17"><g transform="translate(0 0)"><path d="M91.126,8.189a3.962,3.962,0,0,0,2.9-1.2,3.962,3.962,0,0,0,1.2-2.9,3.962,3.962,0,0,0-1.2-2.9,4.094,4.094,0,0,0-5.79,0,3.962,3.962,0,0,0-1.2,2.895,3.962,3.962,0,0,0,1.2,2.9A3.963,3.963,0,0,0,91.126,8.189Zm0,0" transform="translate(-84.142)" /><path d="M14.149,252.177a10.114,10.114,0,0,0-.138-1.074,8.464,8.464,0,0,0-.264-1.08,5.335,5.335,0,0,0-.444-1.007,3.8,3.8,0,0,0-.67-.872,2.952,2.952,0,0,0-.962-.6,3.324,3.324,0,0,0-1.228-.222,1.246,1.246,0,0,0-.665.282c-.2.13-.433.281-.693.447a3.971,3.971,0,0,1-.9.4,3.483,3.483,0,0,1-2.194,0,3.962,3.962,0,0,1-.9-.4c-.258-.165-.491-.315-.694-.447a1.245,1.245,0,0,0-.665-.282,3.319,3.319,0,0,0-1.228.222,2.949,2.949,0,0,0-.962.6,3.8,3.8,0,0,0-.669.872,5.345,5.345,0,0,0-.444,1.007,8.484,8.484,0,0,0-.264,1.08,10.078,10.078,0,0,0-.138,1.075c-.023.325-.034.663-.034,1a2.823,2.823,0,0,0,.838,2.136A3.018,3.018,0,0,0,3,256.1h8.186a3.017,3.017,0,0,0,2.16-.788,2.821,2.821,0,0,0,.839-2.136c0-.343-.012-.68-.034-1Zm0,0" transform="translate(0 -239.104)" /></g></svg>
                                 Meeting Room
-                                <input id="form-filter-meeting" class="form__options-checkbox" type="checkbox">
+                                <input id="form-filter-meeting" class="form__options-checkbox" type="checkbox" checked>
+                                <svg class="form__options-active-icon" xmlns="http://www.w3.org/2000/svg" width="21.338" height="15.912" viewBox="0 0 21.338 15.912">
+                                    <path id="Icon_awesome-check" data-name="Icon awesome-check" d="M7.247,20.177.312,13.242a1.067,1.067,0,0,1,0-1.509l1.509-1.509a1.067,1.067,0,0,1,1.509,0L8,14.9,18.008,4.89a1.067,1.067,0,0,1,1.509,0L21.026,6.4a1.067,1.067,0,0,1,0,1.509L8.756,20.177A1.067,1.067,0,0,1,7.247,20.177Z" transform="translate(0 -4.577)"/>
+                                </svg>
                             </a>
                             <!-- <a class="form__options-item flex" href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19"> <path id="Icon_metro-power-cord" data-name="Icon metro-power-cord" d="M23.536,7.526,21.742,5.733,18.2,9.275,16.189,7.264l3.542-3.542L17.937,1.928,14.4,5.47,12.121,3.2,10.4,4.913,20.551,15.059l1.717-1.717-2.274-2.274Zm-4.557,7.754-8.8-8.8c-1.9,2.277-4.053,5.8-2.564,8.823L5,17.929a1.59,1.59,0,0,0,0,2.242l.294.294a1.59,1.59,0,0,0,2.242,0l2.621-2.621c3.027,1.489,6.546-.665,8.823-2.564Z" transform="translate(-4.536 -1.928)"/> </svg>
