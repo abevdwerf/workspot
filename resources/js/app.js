@@ -59,7 +59,7 @@ for (let i = 0; i < personAmountOptions.length; i++) personAmountOptions[i].oncl
 
 // Toggle an room option
 for (let i = 0; i < roomOptions.length; i++) roomOptions[i].onclick = function () {
-    if (!roomOptions[i].classList.contains("form__options-item--active")) roomOptions[i].classList.add("form__options-item--active");
+    if (roomOptions[i].classList.contains("form__options-item--active")) roomOptions[i].classList.add("form__options-item--active");
     else roomOptions[i].classList.remove("form__options-item--active");
 };
 
@@ -78,11 +78,14 @@ document.getElementById("search-spot-form").onclick = function (event) {
                     url: document.getElementsByClassName("base")[0].innerHTML + "/getrooms",
                     params: {
                         location: document.getElementById("location-id-input").value,
-                        numberOfPeople: numberOfPeopleInput.value
+                        numberOfPeople: numberOfPeopleInput.value,
+                        filterDeskPlace: document.getElementById("form-filter-desk").checked ? "OIL" : "",
+                        filterSilentRoom: document.getElementById("form-filter-silent").checked ? "silent room" : "",
+                        filterMeetingRoom: document.getElementById("form-filter-meeting").checked ? "meeting room" : ""
                     }
                 })
                 .then(function (rooms) {
-                    console.log(rooms.data);
+                    console.log(rooms);
                     for (let i = 0; i < roomTemplate.parentElement.children.length; i++) {
                         if (roomTemplate.parentElement.children[i].classList.contains("room") && !roomTemplate.parentElement.children[i].classList.contains("room--error")) roomTemplate.parentElement.children[i].style.display = "none";
                     }
@@ -101,7 +104,14 @@ document.getElementById("search-spot-form").onclick = function (event) {
                         room.getElementsByClassName("h3")[0].innerHTML = rooms.data[index].name;
                         room.getElementsByClassName("room__floor")[0].innerHTML = (rooms.data[index].floor == 0 ? "Ground" : rooms.data[index].floor)  + " Floor";
                         room.getElementsByClassName("room__highlight")[0].innerHTML = rooms.data[index].seats_available + "/" + rooms.data[index].seats_total ;
-                        room.getElementsByClassName("room__spots-inner")[0].innerHTML = "Spots";
+                        room.getElementsByClassName("room__spots-inner")[0].innerHTML = "Spots left";
+
+                        if (rooms.data[index].type == "silent room" || rooms.data[index].type == "meeting room") {
+                            room.getElementsByClassName("room__labels")[0].style.display = "flex";
+                            if (rooms.data[index].type == "silent room") room.getElementsByClassName("room__label--silent")[0].style.display = "flex";
+                            if (rooms.data[index].type == "meeting room") room.getElementsByClassName("room__label--meeting")[0].style.display = "flex";
+                        }
+
 
                         room.onclick = function () { toggleRoom(room); };
                     }
