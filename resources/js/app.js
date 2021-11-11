@@ -73,6 +73,14 @@ document.getElementById("search-spot-form").onclick = function (event) {
                 locationInput.parentElement.getElementsByTagName("label")[0].style.color = "";
                 locationInput.parentElement.getElementsByTagName("label")[0].getElementsByTagName("svg")[0].style.fill = "#B1B1B1";
 
+                console.log({
+                    location: document.getElementById("location-id-input").value,
+                    numberOfPeople: numberOfPeopleInput.value,
+                    filterDeskPlace: document.getElementById("form-filter-desk").checked ? "OIL" : "",
+                    filterSilentRoom: document.getElementById("form-filter-silent").checked ? "silent room" : "",
+                    filterMeetingRoom: document.getElementById("form-filter-meeting").checked ? "meeting room": ""
+                });
+
                 axios({
                     method: 'get',
                     url: document.getElementsByClassName("base")[0].innerHTML + "/getrooms",
