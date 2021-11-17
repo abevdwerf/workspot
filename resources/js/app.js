@@ -57,10 +57,12 @@ for (let i = 0; i < personAmountOptions.length; i++) personAmountOptions[i].oncl
     numberOfPeopleInput.value = parseInt(event.target.firstChild.innerHTML);
 };
 
+console.log(roomOptions);
+
 // Toggle an room option
 for (let i = 0; i < roomOptions.length; i++) roomOptions[i].onclick = function () {
-    if (roomOptions[i].classList.contains("form__options-item--active")) roomOptions[i].classList.add("form__options-item--active");
-    else roomOptions[i].classList.remove("form__options-item--active");
+    if (roomOptions[i].classList.contains("form__options-item--active")) roomOptions[i].classList.remove("form__options-item--active");
+    else roomOptions[i].classList.add("form__options-item--active");
 };
 
 document.getElementById("search-spot-form").onclick = function (event) {

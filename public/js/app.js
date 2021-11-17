@@ -2115,12 +2115,13 @@ var _loop = function _loop(i) {
 
 for (var i = 0; i < personAmountOptions.length; i++) {
   _loop(i);
-} // Toggle an room option
+}
 
+console.log(roomOptions); // Toggle an room option
 
 var _loop2 = function _loop2(_i) {
   roomOptions[_i].onclick = function () {
-    if (roomOptions[_i].classList.contains("form__options-item--active")) roomOptions[_i].classList.add("form__options-item--active");else roomOptions[_i].classList.remove("form__options-item--active");
+    if (roomOptions[_i].classList.contains("form__options-item--active")) roomOptions[_i].classList.remove("form__options-item--active");else roomOptions[_i].classList.add("form__options-item--active");
   };
 };
 
