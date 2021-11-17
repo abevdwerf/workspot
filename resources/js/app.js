@@ -61,8 +61,12 @@ console.log(roomOptions);
 
 // Toggle an room option
 for (let i = 0; i < roomOptions.length; i++) roomOptions[i].onclick = function () {
+    roomOptions[0].parentElement.parentElement.getElementsByTagName("label")[0].style.color = "";
+    roomOptions[0].parentElement.parentElement.getElementsByTagName("label")[0].getElementsByTagName("svg")[0].style.fill = "";
     if (roomOptions[i].classList.contains("form__options-item--active")) roomOptions[i].classList.remove("form__options-item--active");
     else roomOptions[i].classList.add("form__options-item--active");
+
+    for (let i = 0; i < roomOptions.length; i++) roomOptions[i].classList.remove("form__options-item--error");
 };
 
 document.getElementById("search-spot-form").onclick = function (event) {
@@ -70,68 +74,76 @@ document.getElementById("search-spot-form").onclick = function (event) {
         event.preventDefault();
 
         if (document.getElementById("location-id-input").value != "") {
-            if (numberOfPeopleInput.value != null && numberOfPeopleInput.value > 0) {
-                locationInput.classList.remove("form__input--error");
-                locationInput.parentElement.getElementsByTagName("label")[0].style.color = "";
-                locationInput.parentElement.getElementsByTagName("label")[0].getElementsByTagName("svg")[0].style.fill = "#B1B1B1";
-
-                axios({
-                    method: 'get',
-                    url: document.getElementsByClassName("base")[0].innerHTML + "/getrooms",
-                    params: {
-                        location: document.getElementById("location-id-input").value,
-                        numberOfPeople: numberOfPeopleInput.value,
-                        filterDeskPlace: document.getElementById("form-filter-desk").checked ? "OIL" : "",
-                        filterSilentRoom: document.getElementById("form-filter-silent").checked ? "silent room" : "",
-                        filterMeetingRoom: document.getElementById("form-filter-meeting").checked ? "meeting room" : ""
-                    }
-                })
-                .then(function (rooms) {
-                    for (let i = 0; i < roomTemplate.parentElement.children.length; i++) {
-                        if (roomTemplate.parentElement.children[i].classList.contains("room") && !roomTemplate.parentElement.children[i].classList.contains("room--error")) roomTemplate.parentElement.children[i].style.display = "none";
-                    }
-
-                    const roomAmount = rooms.data.length
-
-                    if (roomAmount == 0) document.getElementsByClassName("room--error")[0].style.display = "flex";
-                    else document.getElementsByClassName("room--error")[0].style.display = "none";
-
-                    for (let index = 0; index < roomAmount; index++) {
-                        let room = roomTemplate.cloneNode(true);
-                        room.style.display = "flex";
-                        room.className = "room";
-                        roomTemplate.parentElement.appendChild(room);
-
-                        room.getElementsByClassName("h3")[0].innerHTML = rooms.data[index].name;
-                        room.getElementsByClassName("room__floor")[0].innerHTML = (rooms.data[index].floor == 0 ? "Ground" : rooms.data[index].floor)  + " Floor";
-                        room.getElementsByClassName("room__highlight")[0].innerHTML = rooms.data[index].seats_available + "/" + rooms.data[index].seats_total ;
-                        room.getElementsByClassName("room__spots-inner")[0].innerHTML = "Spots left";
-
-                        if (rooms.data[index].type == "silent room" || rooms.data[index].type == "meeting room") {
-                            room.getElementsByClassName("room__labels")[0].style.display = "flex";
-                            if (rooms.data[index].type == "silent room") room.getElementsByClassName("room__label--silent")[0].style.display = "flex";
-                            if (rooms.data[index].type == "meeting room") room.getElementsByClassName("room__label--meeting")[0].style.display = "flex";
+            let filterCheck = false;
+            for (let i = 0; i < roomOptions.length; i++) if (roomOptions[i].getElementsByClassName("form__options-checkbox")[0].checked) filterCheck = true;
+            if (filterCheck == true) {
+                if (numberOfPeopleInput.value != null && numberOfPeopleInput.value > 0) {
+                    locationInput.classList.remove("form__input--error");
+                    locationInput.parentElement.getElementsByTagName("label")[0].style.color = "";
+                    locationInput.parentElement.getElementsByTagName("label")[0].getElementsByTagName("svg")[0].style.fill = "#B1B1B1";
+    
+                    axios({
+                        method: 'get',
+                        url: document.getElementsByClassName("base")[0].innerHTML + "/getrooms",
+                        params: {
+                            location: document.getElementById("location-id-input").value,
+                            numberOfPeople: numberOfPeopleInput.value,
+                            filterDeskPlace: document.getElementById("form-filter-desk").checked ? "OIL" : "",
+                            filterSilentRoom: document.getElementById("form-filter-silent").checked ? "silent room" : "",
+                            filterMeetingRoom: document.getElementById("form-filter-meeting").checked ? "meeting room" : ""
                         }
-
-                        room.onclick = function () { toggleRoom(room); };
-                    }
-                });
-
-                let introSection = document.getElementsByClassName("intro")[0];
-                let roomsSection = document.getElementsByClassName("room__rooms")[0];
-
-                introSection.classList.add("animation__slide-out");
-                setTimeout(() => {
-                    introSection.style.display = "none";
-                    roomsSection.style.display = "flex";
-                }, 1000);
-
-                setTimeout(() => {
-                    roomsSection.style.zIndex = 1;
-                }, 2250);
+                    })
+                    .then(function (rooms) {
+                        for (let i = 0; i < roomTemplate.parentElement.children.length; i++) {
+                            if (roomTemplate.parentElement.children[i].classList.contains("room") && !roomTemplate.parentElement.children[i].classList.contains("room--error")) roomTemplate.parentElement.children[i].style.display = "none";
+                        }
+    
+                        const roomAmount = rooms.data.length
+    
+                        if (roomAmount == 0) document.getElementsByClassName("room--error")[0].style.display = "flex";
+                        else document.getElementsByClassName("room--error")[0].style.display = "none";
+    
+                        for (let index = 0; index < roomAmount; index++) {
+                            let room = roomTemplate.cloneNode(true);
+                            room.style.display = "flex";
+                            room.className = "room";
+                            roomTemplate.parentElement.appendChild(room);
+    
+                            room.getElementsByClassName("h3")[0].innerHTML = rooms.data[index].name;
+                            room.getElementsByClassName("room__floor")[0].innerHTML = (rooms.data[index].floor == 0 ? "Ground" : rooms.data[index].floor)  + " Floor";
+                            room.getElementsByClassName("room__highlight")[0].innerHTML = rooms.data[index].seats_available + "/" + rooms.data[index].seats_total ;
+                            room.getElementsByClassName("room__spots-inner")[0].innerHTML = "Spots left";
+    
+                            if (rooms.data[index].type == "silent room" || rooms.data[index].type == "meeting room") {
+                                room.getElementsByClassName("room__labels")[0].style.display = "flex";
+                                if (rooms.data[index].type == "silent room") room.getElementsByClassName("room__label--silent")[0].style.display = "flex";
+                                if (rooms.data[index].type == "meeting room") room.getElementsByClassName("room__label--meeting")[0].style.display = "flex";
+                            }
+    
+                            room.onclick = function () { toggleRoom(room); };
+                        }
+                    });
+    
+                    let introSection = document.getElementsByClassName("intro")[0];
+                    let roomsSection = document.getElementsByClassName("room__rooms")[0];
+    
+                    introSection.classList.add("animation__slide-out");
+                    setTimeout(() => {
+                        introSection.style.display = "none";
+                        roomsSection.style.display = "flex";
+                    }, 1000);
+    
+                    setTimeout(() => {
+                        roomsSection.style.zIndex = 1;
+                    }, 2250);
+                } else {
+                    numberOfPeopleInput.parentElement.getElementsByTagName("label")[0].style.color = "red";
+                    numberOfPeopleInput.parentElement.getElementsByTagName("label")[0].getElementsByTagName("svg")[0].style.fill = "red";
+                }
             } else {
-                numberOfPeopleInput.parentElement.getElementsByTagName("label")[0].style.color = "red";
-                numberOfPeopleInput.parentElement.getElementsByTagName("label")[0].getElementsByTagName("svg")[0].style.fill = "red";
+                for (let i = 0; i < roomOptions.length; i++) roomOptions[i].classList.add("form__options-item--error");
+                roomOptions[0].parentElement.parentElement.getElementsByTagName("label")[0].style.color = "red";
+                roomOptions[0].parentElement.parentElement.getElementsByTagName("label")[0].getElementsByTagName("svg")[0].style.fill = "red";
             }
         } else {
             locationInput.classList.add("form__input--error");
