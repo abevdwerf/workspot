@@ -10,6 +10,7 @@
         svg
             width: 1.9rem
             height: 1.9rem
+            fill: $color-grey
             margin-right: 1.2rem
 
     &__input
@@ -155,12 +156,19 @@
             background-color: $color-grey-light
             transition: background-color $transition-fast, color $transition-fast
 
-            &--active
-                color: #000000
-                background-color: $color-grey !important
+            &--error
+                color: $color-white
+                background-color: #ff5555 !important
 
                 svg
-                    fill: $color-black !important
+                    fill: $color-white !important
+
+            &--active
+                color: $color-white
+                background-color: $color-black !important
+
+                svg
+                    fill: $color-white !important
                     margin-left: 1rem
 
                 .form__options-active-icon
