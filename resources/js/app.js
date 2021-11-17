@@ -126,6 +126,9 @@ document.getElementById("search-spot-form").onclick = function (event) {
     
                     let introSection = document.getElementsByClassName("intro")[0];
                     let roomsSection = document.getElementsByClassName("room__rooms")[0];
+
+                    let workspaceSection = document.getElementsByClassName("workspace")[0];
+                    workspaceSection.style.display = "none";
     
                     introSection.classList.add("animation__slide-out");
                     setTimeout(() => {

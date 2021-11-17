@@ -2196,6 +2196,8 @@ document.getElementById("search-spot-form").onclick = function (event) {
           });
           var introSection = document.getElementsByClassName("intro")[0];
           var roomsSection = document.getElementsByClassName("room__rooms")[0];
+          var workspaceSection = document.getElementsByClassName("workspace")[0];
+          workspaceSection.style.display = "none";
           introSection.classList.add("animation__slide-out");
           setTimeout(function () {
             introSection.style.display = "none";
