@@ -62,7 +62,7 @@
         <div class="container">
             <div class="room__rooms">
                 @foreach($rooms as $room)
-                    <a href="{{ url('workspace/'.$room->id )}}" class="room">
+                    <a href="{{ $room->highlighted_map ? url('workspace/'.$room->id ) : '#' }}" class="room">
                         <div class="room__content flex">
                             <h3 class="h3">{{$room->name}}</h3>
                             <span class="room__floor">{{$room->getFloorName()}}</span>

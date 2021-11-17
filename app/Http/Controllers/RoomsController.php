@@ -15,10 +15,31 @@ class RoomsController extends Controller
         return view("workspace", ['room' => $room]);
     }
 
-    public function findRooms () {
-        //TODO hier moeten nog de gekozen filters bij komen.
+    public function findRooms (Request $request) {
         $rooms = Room::all();
-        return view("rooms", ['rooms' => $rooms]);
+        $locations = Location::all();
+
+        $locationId =  $request->input('locationId');
+        $numberOfPeople = $request->input('numberOfPeople');
+
+        $filters = [
+            0 => $request->input('filter-desk'),
+            1 => $request->input('filter-silent'),
+            2 => $request->input('filter-meeting')
+        ];
+        $specifiedRooms = array();
+
+        foreach ($rooms as $key => $room) {
+            if ($room["location_id"] == $locationId) {
+                if (in_array($room["type"], $filters)) {
+                    if ($room["seats_available"] >= $numberOfPeople) {
+                        array_push($specifiedRooms, $room);
+                    }
+                }
+            }
+        }
+
+        return view("rooms", ['rooms' => $specifiedRooms]);
     }
 
     public function specifyRooms ()
@@ -29,14 +50,10 @@ class RoomsController extends Controller
         $locationId =  $_GET["location"];
         $numberOfPeople = $_GET["numberOfPeople"];
 
-        $filterDeskSpace = $_GET["filterDeskPlace"];
-        $filterSilentRoom = $_GET["filterSilentRoom"];
-        $filterMeetingRoom = $_GET["filterMeetingRoom"];
-
         $filters = [
-            0 => $filterDeskSpace,
-            1 => $filterSilentRoom,
-            2 => $filterMeetingRoom
+            0 => $_GET["filterDeskPlace"],
+            1 => $_GET["filterSilentRoom"],
+            2 => $_GET["filterMeetingRoom"]
         ];
         $specifiedRooms = array();
 

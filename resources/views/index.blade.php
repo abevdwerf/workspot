@@ -34,9 +34,9 @@
     <main>
         <div class="main__wrap">
             <section class="finder">
-                <form class="form__group" autocomplete="off" action="{{ url("rooms") }}" method="POST">
+                <form class="form__group" autocomplete="off" action="{{ url("rooms") }}" method="post">
                     @csrf
-                    @method('get')
+                    @method('post')
                     <div class="form__input-wrapper" style="position: relative;">
                         <label class="form__label flex" for="location-input">
                             <svg xmlns="http://www.w3.org/2000/svg" width="11.667" height="16.667" viewBox="0 0 11.667 16.667"><path d="M10.833,2A5.829,5.829,0,0,0,5,7.833c0,4.375,5.833,10.833,5.833,10.833s5.833-6.458,5.833-10.833A5.829,5.829,0,0,0,10.833,2Zm0,7.917a2.083,2.083,0,1,1,2.083-2.083A2.084,2.084,0,0,1,10.833,9.917Z" transform="translate(-5 -2)" /></svg>
@@ -47,7 +47,7 @@
                                 <a class="form__dropdown-option" data-id="{{$location->id}}">{{$location->name}}</a>
                             @endforeach
                         </div>
-                        <input type="hidden" id="location-id-input">
+                        <input name="locationId" type="hidden" id="location-id-input">
                         <input class="form__input" id="location-input" type="text" placeholder="Selecteer een locatie">
                     </div>
 
@@ -68,7 +68,7 @@
                             <div class="form__selection-option"><span class="form__selection-text">8</span></div>
                         </div>
 
-                        <input style="display: none;" type="number" id="location-number-of-people" value="3">
+                        <input name="numberOfPeople" style="display: none;" type="number" id="location-number-of-people" value="3">
                     </div>
 
                     <div class="form__input-wrapper">
@@ -81,7 +81,7 @@
                             <a class="form__options-item flex">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 17h-5v-10h5v10zm2-10v10l9 5v-20l-9 5zm15.324 4.993l1.646-1.659-1.324-1.324-1.651 1.67-1.665-1.648-1.316 1.318 1.67 1.657-1.65 1.669 1.318 1.317 1.658-1.672 1.666 1.653 1.324-1.325-1.676-1.656z"/></svg>
                                 Silent Room
-                                <input id="form-filter-silent" class="form__options-checkbox" type="checkbox">
+                                <input value="silent room" name="filter-silent" id="form-filter-silent" class="form__options-checkbox" type="checkbox">
                                 <svg class="form__options-active-icon" xmlns="http://www.w3.org/2000/svg" width="21.338" height="15.912" viewBox="0 0 21.338 15.912">
                                     <path id="Icon_awesome-check" data-name="Icon awesome-check" d="M7.247,20.177.312,13.242a1.067,1.067,0,0,1,0-1.509l1.509-1.509a1.067,1.067,0,0,1,1.509,0L8,14.9,18.008,4.89a1.067,1.067,0,0,1,1.509,0L21.026,6.4a1.067,1.067,0,0,1,0,1.509L8.756,20.177A1.067,1.067,0,0,1,7.247,20.177Z" transform="translate(0 -4.577)"/>
                                 </svg>
@@ -89,7 +89,7 @@
                             <a class="form__options-item flex">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 2h-20v13h20v-13zm-2 11h-16v-9h16v9zm2 3h-20l-2 6h24l-2-6zm-12.228 5l.466-1h3.524l.466 1h-4.456z"/></svg>
                                 Desks
-                                <input id="form-filter-desk" class="form__options-checkbox" type="checkbox">
+                                <input value="OIL" name="filter-desk" id="form-filter-desk" class="form__options-checkbox" type="checkbox">
                                 <svg class="form__options-active-icon" xmlns="http://www.w3.org/2000/svg" width="21.338" height="15.912" viewBox="0 0 21.338 15.912">
                                     <path id="Icon_awesome-check" data-name="Icon awesome-check" d="M7.247,20.177.312,13.242a1.067,1.067,0,0,1,0-1.509l1.509-1.509a1.067,1.067,0,0,1,1.509,0L8,14.9,18.008,4.89a1.067,1.067,0,0,1,1.509,0L21.026,6.4a1.067,1.067,0,0,1,0,1.509L8.756,20.177A1.067,1.067,0,0,1,7.247,20.177Z" transform="translate(0 -4.577)"/>
                                 </svg>
@@ -97,7 +97,7 @@
                             <a class="form__options-item flex">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14.183" height="17" viewBox="0 0 14.183 17"><g transform="translate(0 0)"><path d="M91.126,8.189a3.962,3.962,0,0,0,2.9-1.2,3.962,3.962,0,0,0,1.2-2.9,3.962,3.962,0,0,0-1.2-2.9,4.094,4.094,0,0,0-5.79,0,3.962,3.962,0,0,0-1.2,2.895,3.962,3.962,0,0,0,1.2,2.9A3.963,3.963,0,0,0,91.126,8.189Zm0,0" transform="translate(-84.142)" /><path d="M14.149,252.177a10.114,10.114,0,0,0-.138-1.074,8.464,8.464,0,0,0-.264-1.08,5.335,5.335,0,0,0-.444-1.007,3.8,3.8,0,0,0-.67-.872,2.952,2.952,0,0,0-.962-.6,3.324,3.324,0,0,0-1.228-.222,1.246,1.246,0,0,0-.665.282c-.2.13-.433.281-.693.447a3.971,3.971,0,0,1-.9.4,3.483,3.483,0,0,1-2.194,0,3.962,3.962,0,0,1-.9-.4c-.258-.165-.491-.315-.694-.447a1.245,1.245,0,0,0-.665-.282,3.319,3.319,0,0,0-1.228.222,2.949,2.949,0,0,0-.962.6,3.8,3.8,0,0,0-.669.872,5.345,5.345,0,0,0-.444,1.007,8.484,8.484,0,0,0-.264,1.08,10.078,10.078,0,0,0-.138,1.075c-.023.325-.034.663-.034,1a2.823,2.823,0,0,0,.838,2.136A3.018,3.018,0,0,0,3,256.1h8.186a3.017,3.017,0,0,0,2.16-.788,2.821,2.821,0,0,0,.839-2.136c0-.343-.012-.68-.034-1Zm0,0" transform="translate(0 -239.104)" /></g></svg>
                                 Meeting Room
-                                <input id="form-filter-meeting" class="form__options-checkbox" type="checkbox">
+                                <input value="meeting room" name="filter-meeting" id="form-filter-meeting" class="form__options-checkbox" type="checkbox">
                                 <svg class="form__options-active-icon" xmlns="http://www.w3.org/2000/svg" width="21.338" height="15.912" viewBox="0 0 21.338 15.912">
                                     <path id="Icon_awesome-check" data-name="Icon awesome-check" d="M7.247,20.177.312,13.242a1.067,1.067,0,0,1,0-1.509l1.509-1.509a1.067,1.067,0,0,1,1.509,0L8,14.9,18.008,4.89a1.067,1.067,0,0,1,1.509,0L21.026,6.4a1.067,1.067,0,0,1,0,1.509L8.756,20.177A1.067,1.067,0,0,1,7.247,20.177Z" transform="translate(0 -4.577)"/>
                                 </svg>

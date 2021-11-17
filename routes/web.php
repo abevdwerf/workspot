@@ -14,7 +14,7 @@
 
     Route::get('', [App\Http\Controllers\IndexController::class, 'beforeIndex']);
 
-    Route::get('rooms', [App\Http\Controllers\RoomsController::class, 'findRooms']);
+    Route::post('rooms', [App\Http\Controllers\RoomsController::class, 'findRooms']);
 
     Route::get('workspace/{id}', [App\Http\Controllers\RoomsController::class, 'findRoom']);
 
