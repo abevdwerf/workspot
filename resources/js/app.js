@@ -73,14 +73,6 @@ document.getElementById("search-spot-form").onclick = function (event) {
                 locationInput.parentElement.getElementsByTagName("label")[0].style.color = "";
                 locationInput.parentElement.getElementsByTagName("label")[0].getElementsByTagName("svg")[0].style.fill = "#B1B1B1";
 
-                console.log({
-                    location: document.getElementById("location-id-input").value,
-                    numberOfPeople: numberOfPeopleInput.value,
-                    filterDeskPlace: document.getElementById("form-filter-desk").checked ? "OIL" : "",
-                    filterSilentRoom: document.getElementById("form-filter-silent").checked ? "silent room" : "",
-                    filterMeetingRoom: document.getElementById("form-filter-meeting").checked ? "meeting room": ""
-                });
-
                 axios({
                     method: 'get',
                     url: document.getElementsByClassName("base")[0].innerHTML + "/getrooms",
@@ -93,7 +85,6 @@ document.getElementById("search-spot-form").onclick = function (event) {
                     }
                 })
                 .then(function (rooms) {
-                    console.log(rooms);
                     for (let i = 0; i < roomTemplate.parentElement.children.length; i++) {
                         if (roomTemplate.parentElement.children[i].classList.contains("room") && !roomTemplate.parentElement.children[i].classList.contains("room--error")) roomTemplate.parentElement.children[i].style.display = "none";
                     }
@@ -119,7 +110,6 @@ document.getElementById("search-spot-form").onclick = function (event) {
                             if (rooms.data[index].type == "silent room") room.getElementsByClassName("room__label--silent")[0].style.display = "flex";
                             if (rooms.data[index].type == "meeting room") room.getElementsByClassName("room__label--meeting")[0].style.display = "flex";
                         }
-
 
                         room.onclick = function () { toggleRoom(room); };
                     }
@@ -150,7 +140,7 @@ document.getElementById("search-spot-form").onclick = function (event) {
 }
 
 function toggleRoom (room) {
-    for (let i = 0; i < room.parentElement.children.length; i++) if ( room.parentElement.children[i].classList.contains("room")) room.parentElement.children[i].className = "room";
+    for (let i = 0; i < room.parentElement.children.length; i++) if ( room.parentElement.children[i].classList.contains("room") && !room.parentElement.children[i].classList.contains("room--error") ) room.parentElement.children[i].className = "room";
     if (room.classList.contains("room--active")) room.classList.remove("room--active");
     else room.classList.add("room--active");
 

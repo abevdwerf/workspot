@@ -2120,7 +2120,7 @@ for (var i = 0; i < personAmountOptions.length; i++) {
 
 var _loop2 = function _loop2(_i) {
   roomOptions[_i].onclick = function () {
-    if (!roomOptions[_i].classList.contains("form__options-item--active")) roomOptions[_i].classList.add("form__options-item--active");else roomOptions[_i].classList.remove("form__options-item--active");
+    if (roomOptions[_i].classList.contains("form__options-item--active")) roomOptions[_i].classList.add("form__options-item--active");else roomOptions[_i].classList.remove("form__options-item--active");
   };
 };
 
@@ -2137,13 +2137,6 @@ document.getElementById("search-spot-form").onclick = function (event) {
         locationInput.classList.remove("form__input--error");
         locationInput.parentElement.getElementsByTagName("label")[0].style.color = "";
         locationInput.parentElement.getElementsByTagName("label")[0].getElementsByTagName("svg")[0].style.fill = "#B1B1B1";
-        console.log({
-          location: document.getElementById("location-id-input").value,
-          numberOfPeople: numberOfPeopleInput.value,
-          filterDeskPlace: document.getElementById("form-filter-desk").checked ? "OIL" : "",
-          filterSilentRoom: document.getElementById("form-filter-silent").checked ? "silent room" : "",
-          filterMeetingRoom: document.getElementById("form-filter-meeting").checked ? "meeting room" : ""
-        });
         axios({
           method: 'get',
           url: document.getElementsByClassName("base")[0].innerHTML + "/getrooms",
@@ -2155,8 +2148,6 @@ document.getElementById("search-spot-form").onclick = function (event) {
             filterMeetingRoom: document.getElementById("form-filter-meeting").checked ? "meeting room" : ""
           }
         }).then(function (rooms) {
-          console.log(rooms);
-
           for (var _i2 = 0; _i2 < roomTemplate.parentElement.children.length; _i2++) {
             if (roomTemplate.parentElement.children[_i2].classList.contains("room") && !roomTemplate.parentElement.children[_i2].classList.contains("room--error")) roomTemplate.parentElement.children[_i2].style.display = "none";
           }
@@ -2213,7 +2204,7 @@ document.getElementById("search-spot-form").onclick = function (event) {
 
 function toggleRoom(room) {
   for (var _i3 = 0; _i3 < room.parentElement.children.length; _i3++) {
-    if (room.parentElement.children[_i3].classList.contains("room")) room.parentElement.children[_i3].className = "room";
+    if (room.parentElement.children[_i3].classList.contains("room") && !room.parentElement.children[_i3].classList.contains("room--error")) room.parentElement.children[_i3].className = "room";
   }
 
   if (room.classList.contains("room--active")) room.classList.remove("room--active");else room.classList.add("room--active");
