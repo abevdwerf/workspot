@@ -2071,7 +2071,6 @@ var numberOfPeopleInput = document.getElementById("location-number-of-people"); 
 var roomOptions = document.getElementsByClassName("form__options-item");
 var personAmountOptions = document.getElementsByClassName("form__selection-option"); // Other variables
 
-var rooms = document.getElementsByClassName("room");
 var roomTemplate = document.getElementById("room-template");
 locationsDropdown.childNodes.forEach(function (location) {
   location.onclick = function () {
@@ -2115,9 +2114,8 @@ var _loop = function _loop(i) {
 
 for (var i = 0; i < personAmountOptions.length; i++) {
   _loop(i);
-}
+} // Toggle an room option
 
-console.log(roomOptions); // Toggle an room option
 
 var _loop2 = function _loop2(_i) {
   roomOptions[_i].onclick = function () {
@@ -2186,7 +2184,7 @@ document.getElementById("search-spot-form").onclick = function (event) {
               }
 
               room.onclick = function () {
-                toggleRoom(room);
+                toggleRoom(room, rooms.data[index].highlighted_map);
               };
             };
 
@@ -2226,17 +2224,24 @@ document.getElementById("search-spot-form").onclick = function (event) {
   }
 };
 
-function toggleRoom(room) {
+function toggleRoom(room, mapImage) {
   for (var _i5 = 0; _i5 < room.parentElement.children.length; _i5++) {
     if (room.parentElement.children[_i5].classList.contains("room") && !room.parentElement.children[_i5].classList.contains("room--error")) room.parentElement.children[_i5].className = "room";
   }
 
   if (room.classList.contains("room--active")) room.classList.remove("room--active");else room.classList.add("room--active");
   var workspaceSection = document.getElementsByClassName("workspace")[0];
-  workspaceSection.style.display = "flex";
-  setTimeout(function () {
-    workspaceSection.style.zIndex = 1;
-  }, 1250);
+
+  if (mapImage != null) {
+    workspaceSection.style.display = "flex";
+    document.getElementsByClassName("workspace__image")[0].setAttribute("src", mapImage);
+    setTimeout(function () {
+      workspaceSection.style.zIndex = 1;
+    }, 1250);
+  } else {
+    workspaceSection.style.zIndex = -1;
+    workspaceSection.style.display = "none";
+  }
 }
 
 /***/ }),

@@ -251,8 +251,10 @@ a {
   top: 100%;
   z-index: 1;
   display: none;
+  overflow: auto;
   cursor: pointer;
   padding: 1.5rem;
+  max-height: 25rem;
   position: absolute;
   box-shadow: 0 1rem 0.8rem rgba(43, 43, 43, 0.5);
   border-radius: 0.5rem;
@@ -746,7 +748,8 @@ a {
     margin-top: 0;
     padding: 3rem;
     box-shadow: 0 0.4rem 1.2rem #e7e7e7;
+    background-color: #c1dbff;
     border-radius: 0.5rem;
-    background-color: #ffffff;
+    border-radius: 1.5rem;
   }
 }

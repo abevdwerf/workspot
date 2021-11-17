@@ -13,7 +13,6 @@ let roomOptions = document.getElementsByClassName("form__options-item");
 let personAmountOptions = document.getElementsByClassName("form__selection-option");
 
 // Other variables
-let rooms = document.getElementsByClassName("room");
 const roomTemplate = document.getElementById("room-template");
 
 locationsDropdown.childNodes.forEach(location => {
@@ -56,8 +55,6 @@ for (let i = 0; i < personAmountOptions.length; i++) personAmountOptions[i].oncl
 
     numberOfPeopleInput.value = parseInt(event.target.firstChild.innerHTML);
 };
-
-console.log(roomOptions);
 
 // Toggle an room option
 for (let i = 0; i < roomOptions.length; i++) roomOptions[i].onclick = function () {
@@ -120,7 +117,7 @@ document.getElementById("search-spot-form").onclick = function (event) {
                                 if (rooms.data[index].type == "meeting room") room.getElementsByClassName("room__label--meeting")[0].style.display = "flex";
                             }
     
-                            room.onclick = function () { toggleRoom(room); };
+                            room.onclick = function () { toggleRoom(room, rooms.data[index].highlighted_map); };
                         }
                     });
     
@@ -156,12 +153,19 @@ document.getElementById("search-spot-form").onclick = function (event) {
     }
 }
 
-function toggleRoom (room) {
+function toggleRoom (room, mapImage) {
     for (let i = 0; i < room.parentElement.children.length; i++) if ( room.parentElement.children[i].classList.contains("room") && !room.parentElement.children[i].classList.contains("room--error") ) room.parentElement.children[i].className = "room";
     if (room.classList.contains("room--active")) room.classList.remove("room--active");
     else room.classList.add("room--active");
 
     let workspaceSection = document.getElementsByClassName("workspace")[0];
-    workspaceSection.style.display = "flex";
-    setTimeout(() => { workspaceSection.style.zIndex = 1; }, 1250);
+
+    if (mapImage != null) {
+        workspaceSection.style.display = "flex";
+        document.getElementsByClassName("workspace__image")[0].setAttribute("src", mapImage);
+        setTimeout(() => { workspaceSection.style.zIndex = 1; }, 1250);
+    } else {
+        workspaceSection.style.zIndex = -1;
+        workspaceSection.style.display = "none";
+    }
 }
