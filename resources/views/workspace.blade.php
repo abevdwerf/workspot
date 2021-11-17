@@ -55,7 +55,7 @@
 
         <div class="container">
             <div class="workspace">
-                <img class="workspace__image" src="{{asset('/img/workspace.png')}}" alt="Floor plan of workspace">
+                <img class="workspace__image" src="{{asset($room->highlighted_map)}}" alt="Floor plan of workspace">
             </div>
         </div>
     </main>

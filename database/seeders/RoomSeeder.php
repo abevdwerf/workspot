@@ -28,12 +28,13 @@ class RoomSeeder extends Seeder
         ]);
         DB::table('rooms')->insert([
             'location_id' => 1,
-            'name' => '0.18',
+            'name' => '0.11',
             'floor' => 0,
             'type' => 'meeting room',
             'seats_total' => 4,
             'seats_available' => 4,
             'reserved' => 0,
+            'highlighted_map' => 'img/0.11.png',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -45,6 +46,7 @@ class RoomSeeder extends Seeder
             'seats_total' => 6,
             'seats_available' => 3,
             'reserved' => 0,
+            'highlighted_map' => 'img/0.10.png',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);

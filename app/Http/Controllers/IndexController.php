@@ -16,7 +16,7 @@ class IndexController extends Controller
             'locations' => $locations,
             'rooms' => $rooms
         );
-
+        // dd($rooms);
         return view("index")->with($data);
     }
 }

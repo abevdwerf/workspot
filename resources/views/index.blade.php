@@ -170,7 +170,7 @@
             </div>
 
             <div class="workspace animation__slide-in flex" style="display: none;" >
-                <img class="workspace__image" src="./img/workspace.png" alt="Floor plan of workspace">
+                <img class="workspace__image" src="" alt="Floor plan of workspace">
             </div>
         </div>
     </main>
