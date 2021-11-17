@@ -61,18 +61,24 @@
 
         <div class="container">
             <div class="room__rooms">
-                @foreach($rooms as $room)
-                    <a href="{{ $room->highlighted_map ? url('workspace/'.$room->id ) : '#' }}" class="room">
-                        <div class="room__content flex">
-                            <h3 class="h3">{{$room->name}}</h3>
-                            <span class="room__floor">{{$room->getFloorName()}}</span>
-                        </div>
-
-                        <span class="room__spots flex">
-                            <span class="room__highlight">{{$room->seats_available}} / {{$room->seats_total}}</span> Spots
-                        </span>
+                @if (count($rooms) == 0)
+                    <a class="room room--error">
+                        <p>No available rooms found.</p>
                     </a>
-                @endforeach
+                @else
+                    @foreach($rooms as $room)
+                        <a href="{{ $room->highlighted_map ? url('workspace/'.$room->id ) : '#' }}" class="room">
+                            <div class="room__content flex">
+                                <h3 class="h3">{{$room->name}}</h3>
+                                <span class="room__floor">{{$room->getFloorName()}}</span>
+                            </div>
+
+                            <span class="room__spots flex">
+                                <span class="room__highlight">{{$room->seats_available}} / {{$room->seats_total}}</span> Spots
+                            </span>
+                        </a>
+                    @endforeach
+                @endif
             </div>
         </div>
     </main>
